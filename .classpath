@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="demo/record-indexer-demo.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/checkstyle-5.3-all.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/junit-4.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xstream-1.4.2.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/dnorth2/workspace/record-indexer/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/dnorth2/workspace/record-indexer/lib/commons-io-2.4-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/dnorth2/workspace/record-indexer/lib/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

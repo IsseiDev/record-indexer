@@ -1,5 +1,6 @@
 package client.indexer;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -76,7 +77,7 @@ public class IndexerFrame extends JFrame {
 		
 		JSplitPane mainSplitter = new JSplitPane();
 		mainSplitter.setContinuousLayout(true);
-		mainSplitter.setResizeWeight(0.6);
+		mainSplitter.setResizeWeight(0.5);
 		mainSplitter.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		GridBagConstraints gbc_mainSplitter = new GridBagConstraints();
 		gbc_mainSplitter.fill = GridBagConstraints.BOTH;
@@ -94,6 +95,7 @@ public class IndexerFrame extends JFrame {
 		JPanel table = new JPanel();
 		JPanel imagenav = new JPanel();
 		
+				
 		bottomSplitter.setLeftComponent(table);
 		bottomSplitter.setRightComponent(imagenav);
 

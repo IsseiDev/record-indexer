@@ -21,7 +21,7 @@ public class InvalidFrame extends JDialog {
 	
 	FrameController controller;
 	
-	public InvalidFrame(FrameController controller) {
+	public InvalidFrame(FrameController controller, LoginFrame loginFrame) {
 		
 		this.controller = controller;
 		// Set the window's title
@@ -55,7 +55,7 @@ public class InvalidFrame extends JDialog {
 		
 		this.add(buttonPanel, BorderLayout.PAGE_END);
 		// Set the location of the window on the desktop
-		this.setLocation(100, 100);
+		this.setLocationRelativeTo(loginFrame);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
 		this.setSize(270, 120);

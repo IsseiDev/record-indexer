@@ -25,7 +25,7 @@ public class FrameController {
 	Client_Communicator cc = new Client_Communicator("localhost", "8080");
 	LoginFrame loginFrame = null;
 	WelcomeFrame welcome;
-	InvalidFrame invalidFrame = new InvalidFrame(this);
+	InvalidFrame invalidFrame;
 	IndexerFrame indexerFrame = null;
 	String username = "test1";
 	String password = "test1";
@@ -68,8 +68,10 @@ public class FrameController {
 	
 	public void testIndexer()
 	{
+		loginFrame = new LoginFrame(this);
 		indexerFrame = new IndexerFrame(this);
 		indexerFrame.setVisible(true);
+		loginFrame.setVisible(false);
 	}
 	
 	public void exitProgram()
@@ -103,6 +105,7 @@ public class FrameController {
 			}
 			else
 			{
+				invalidFrame = new InvalidFrame(this, loginFrame);
 				invalidFrame.setVisible(true);
 			}
 		} catch (ClientException e) {

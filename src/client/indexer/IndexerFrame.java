@@ -18,6 +18,8 @@ public class IndexerFrame extends JFrame {
 	JMenuBar menuBar;
 	JMenu menu;
 	JMenuItem downloadBatch;
+	JMenuItem logout;
+	JMenuItem exit;
 	
 	//All of the buttons
 	JButton zoomInButton;
@@ -47,6 +49,14 @@ public class IndexerFrame extends JFrame {
 		downloadBatch = new JMenuItem("Download Batch");
 		downloadBatch.addActionListener(new MenuListener(this, "download"));
 		menu.add(downloadBatch);
+		
+		logout = new JMenuItem("Logout");
+		logout.addActionListener(new MenuListener(this, "logout"));
+		menu.add(logout);
+		
+		exit = new JMenuItem("Exit");
+		exit.addActionListener(new MenuListener(this, "exit"));
+		menu.add(exit);
 		
 		menuBar.add(menu);
 		

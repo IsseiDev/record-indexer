@@ -42,7 +42,7 @@ public class LoginFrame extends JFrame {
 		usernameLabel.setBounds(10, 10, 140, 20);
 		this.add(usernameLabel);
 		usernameField = new JTextField();
-		usernameField.setBounds(100, 10, 200, 20);
+		usernameField.setBounds(100, 10, 250, 20);
 		this.add(usernameField);
 
 		// Password label and field
@@ -50,7 +50,7 @@ public class LoginFrame extends JFrame {
 		passwordLabel.setBounds(10, 40, 140, 20);
 		this.add(passwordLabel);
 		passwordField = new JPasswordField();
-		passwordField.setBounds(100, 40, 200, 20);
+		passwordField.setBounds(100, 40, 250, 20);
 		this.add(passwordField);
 		
 		//Setting the output pane
@@ -75,7 +75,7 @@ public class LoginFrame extends JFrame {
 		this.setLocation(100, 100);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
-		this.setSize(375, 100);
+		this.setSize(375, 150);
 	}
 	
 	public void validateUser()

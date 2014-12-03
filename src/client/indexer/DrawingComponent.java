@@ -59,7 +59,9 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		Image spongebob = loadImage("C:\\Users\\dnorth2\\workspace\\record-indexer\\Records\\images\\1890_image0.png");
+		Image spongebob = loadImage("/users//guest//d//dnorth2//workspace//record-indexer//Records//images//1890_image0.png");
+		w_originX = spongebob.getWidth(null)/2;
+		w_originY = spongebob.getHeight(null)/2;
 		shapes.add(new DrawingImage(spongebob, new Rectangle2D.Double(50, 250, spongebob.getWidth(null) * scale, spongebob.getHeight(null) * scale)));
 				
 	}
@@ -115,6 +117,7 @@ public class DrawingComponent extends JComponent {
 		Graphics2D g2 = (Graphics2D)g;
 		drawBackground(g2);
 
+		g2.translate(getWidth() / 2.0, getHeight () / 2.0);
 		g2.scale(scale, scale);
 		g2.translate(-w_originX, -w_originY);
 
@@ -140,6 +143,7 @@ public class DrawingComponent extends JComponent {
 			int d_Y = e.getY();
 			
 			AffineTransform transform = new AffineTransform();
+			transform.translate(getWidth() / 2.0, getHeight() / 2.0);
 			transform.scale(scale, scale);
 			transform.translate(-w_originX, -w_originY);
 			
@@ -181,6 +185,7 @@ public class DrawingComponent extends JComponent {
 				int d_Y = e.getY();
 				
 				AffineTransform transform = new AffineTransform();
+				transform.translate(getWidth() / 2.0, getHeight() / 2.0);
 				transform.scale(scale, scale);
 				transform.translate(-w_dragStartOriginX, -w_dragStartOriginY);
 				

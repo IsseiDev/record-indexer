@@ -1,8 +1,11 @@
 package client.indexer;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +15,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 import client.UI.FrameController;
 import client.listeners.MenuListener;
@@ -28,7 +35,7 @@ public class IndexerFrame extends JFrame {
 	ImagePanel image;
 	JTabbedPane bottomLeftPane;
 	JTabbedPane bottomRightPane;
-	JPanel tableEntry;
+	TablePanel tableEntry;
 	JPanel formEntry;
 	JPanel fieldHelp;
 	JPanel imageNav;
@@ -99,8 +106,22 @@ public class IndexerFrame extends JFrame {
 		mainSplitter.setRightComponent(bottomSplitter);
 		
 		//Initialize the Panels
-		image = new ImagePanel("http://localhost:8080/images/draft_image3.png");
-		tableEntry = new TablePanel();
+		image = new ImagePanel("http://localhost:8080/images/draft_image3.png");		
+		
+		//Creating the table to pass in
+		TableModel tableModel = new TableModel();
+		JTable table = new JTable(tableModel);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setCellSelectionEnabled(true);
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		TableColumnModel columnModel = table.getColumnModel();
+		for (int i = 0; i < tableModel.getColumnCount(); ++i) {
+			TableColumn column = columnModel.getColumn(i);
+			column.setPreferredWidth(100);
+		}	
+		
+		tableEntry = new TablePanel(table);
 		formEntry = new FormPanel();
 		
 		bottomLeftPane = new JTabbedPane(JTabbedPane.TOP);
@@ -217,14 +238,6 @@ public class IndexerFrame extends JFrame {
 		this.bottomRightPane = bottomRightPane;
 	}
 
-	public JPanel getTableEntry() {
-		return tableEntry;
-	}
-
-	public void setTableEntry(JPanel tableEntry) {
-		this.tableEntry = tableEntry;
-	}
-
 	public JPanel getFormEntry() {
 		return formEntry;
 	}
@@ -304,4 +317,5 @@ public class IndexerFrame extends JFrame {
 	public void setController(FrameController controller) {
 		this.controller = controller;
 	}
+	
 }

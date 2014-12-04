@@ -1,5 +1,6 @@
-/client/
-/data_importer/
 /lectures/
 /server/
+/servertester/
+/client/
 /shared/
+/data_importer/

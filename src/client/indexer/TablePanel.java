@@ -1,20 +1,17 @@
 package client.indexer;
 
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
-public class TablePanel extends JPanel {
-	ColorTable component;
+public class TablePanel extends JScrollPane {
 
-	public TablePanel(){
-		this.setBackground(Color.RED);
+	public TablePanel(JComponent table){
+		super(table);
+		this.setBackground(Color.GRAY);
 		
-		component = new ColorTable();
-
-		this.add(component, BorderLayout.CENTER);
 	}
 }

@@ -7,10 +7,7 @@ import javax.swing.table.*;
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
 
-	private java.util.List<ColorScheme> colorSchemes;
-
-	public TableModel(java.util.List<ColorScheme> colorSchemes) {
-		this.colorSchemes = colorSchemes;
+	public TableModel() {
 	}
 
 	@Override
@@ -54,47 +51,23 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return colorSchemes.size();
+		return 5;
 	}
 
 	@Override
 	public boolean isCellEditable(int row, int column) {
+		if(column == 0)
+		{
+			return false;
+		}
+		
 		return true;
 	}
 
 	@Override
 	public Object getValueAt(int row, int column) {
 
-		Object result = null;
-
-		if (row >= 0 && row < getRowCount() && column >= 0
-				&& column < getColumnCount()) {
-
-			ColorScheme cs = colorSchemes.get(row);
-
-			switch (column) {
-			case 0:
-				result = cs.getName();
-				break;
-			case 1:
-				result = ColorUtils.toString(cs.getForeground());
-				break;
-			case 2:
-				result = ColorUtils.toString(cs.getBackground());
-				break;
-			case 3:
-				result = ColorUtils.toString(cs.getHighlight());
-				break;
-			case 4:
-				result = ColorUtils.toString(cs.getShadow());
-				break;
-			default:
-				assert false;
-				break;
-			}
-		} else {
-			throw new IndexOutOfBoundsException();
-		}
+		String result = "hello";
 
 		return result;
 	}
@@ -105,35 +78,9 @@ public class TableModel extends AbstractTableModel {
 		if (row >= 0 && row < getRowCount() && column >= 0
 				&& column < getColumnCount()) {
 
-			ColorScheme cs = colorSchemes.get(row);
 			
-			Color c = null;
 			if (column > 0) {
-				c = ColorUtils.fromString((String)value);
-				if (c == null) {
-					return;
-				}
-			}
-
-			switch (column) {
-			case 0:
-				cs.setName((String)value);
-				break;
-			case 1:
-				cs.setForeground(c);
-				break;
-			case 2:
-				cs.setBackground(c);
-				break;
-			case 3:
-				cs.setHighlight(c);
-				break;
-			case 4:
-				cs.setShadow(c);
-				break;
-			default:
-				assert false;
-				break;
+				
 			}
 			
 			this.fireTableCellUpdated(row, column);

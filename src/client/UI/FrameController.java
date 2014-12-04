@@ -144,13 +144,7 @@ public class FrameController {
 		int projectID = 0;
 		GetSampleImage_Result samResult = null;
 		
-		for(ProjectInfo pi : proResult.getInfo())
-		{
-			if(pi.getProject_title().equals(projectName))
-			{
-				projectID = pi.getProject_id();
-			}
-		}
+		projectID = getIDfromProjectName(projectName);
 
 		try {
 			samResult= cc.Sample_Image(new GetSampleImage_Params(projectID));
@@ -194,13 +188,9 @@ public class FrameController {
 		int projectID = 0;
 		DownloadBatch_Result batchResult = null;
 		
-		for(ProjectInfo pi : proResult.getInfo())
-		{
-			if(pi.getProject_title().equals(projectName))
-			{
-				projectID = pi.getProject_id();
-			}
-		}
+		projectID = getIDfromProjectName(projectName);
+		
+		System.out.println("The Name: " + projectName + " and ID: " + projectID);
 		
 		indexerFrame.getImage().getDrawComponent().getShapes().clear();
 		
@@ -213,6 +203,21 @@ public class FrameController {
 		//indexerFrame.set
 		
 		return batchResult;
+	}
+	
+	public int getIDfromProjectName(String projectName)
+	{
+		int projectID = 0;
+		
+		for(ProjectInfo pi : proResult.getInfo())
+		{
+			if(pi.getProject_title().equals(projectName))
+			{
+				projectID = pi.getProject_id();
+			}
+		}
+		
+		return projectID;
 	}
 
 	/**

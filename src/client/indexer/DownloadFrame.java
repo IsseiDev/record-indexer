@@ -68,19 +68,7 @@ public class DownloadFrame extends JDialog{
 		outputPane = new JScrollPane();
 		outputPane.setBounds(10, 100, 210, 200);
 		this.add(outputPane);
-		
-		
-		//Setting the button and the listener to the button
-		//JPanel buttonPanel = new JPanel(new GridLayout(0,2,0,2));
-		//JButton theButton = new JButton("Login");
-		//JButton theExit = new JButton("Exit");
-		//buttonPanel.add(theButton);
-		//theButton.addActionListener(button);
-		//buttonPanel.add(theExit);
-		//theExit.addActionListener(button2);
-		
-		//this.add(buttonPanel);
-		// Set the location of the window on the desktop
+
 		this.setLocation(100, 100);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
@@ -102,7 +90,7 @@ public class DownloadFrame extends JDialog{
 	
 	public void downloadBatch()
 	{
-		//controller.downloadBatch();
+		controller.downloadBatch((String)projectsList.getSelectedItem());
 	}
 
 }

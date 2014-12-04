@@ -1,7 +1,5 @@
 package shared.communication;
 
-import java.io.File;
-
 public class GetSampleImage_Result {
 
 	String image_url;

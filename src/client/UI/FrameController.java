@@ -4,6 +4,8 @@ package client.UI;
 import java.util.Vector;
 
 import server.database.DatabaseException;
+import shared.communication.DownloadBatch_Params;
+import shared.communication.DownloadBatch_Result;
 import shared.communication.GetProjects_Result;
 import shared.communication.GetProjects_Result.ProjectInfo;
 import shared.communication.GetFields_Params;
@@ -185,6 +187,32 @@ public class FrameController {
 		}
 		
 		return searchResult.getURLStringVector(hostname, port);
+	}
+	
+	public DownloadBatch_Result downloadBatch(String projectName) {
+		
+		int projectID = 0;
+		DownloadBatch_Result batchResult = null;
+		
+		for(ProjectInfo pi : proResult.getInfo())
+		{
+			if(pi.getProject_title().equals(projectName))
+			{
+				projectID = pi.getProject_id();
+			}
+		}
+		
+		indexerFrame.getImage().getDrawComponent().getShapes().clear();
+		
+		try {
+			batchResult = cc.Download_Batch(new DownloadBatch_Params(username, password, projectID));
+		} catch (ClientException e) {
+			System.out.println("Could not connect with the server.");
+		}
+		
+		//indexerFrame.set
+		
+		return batchResult;
 	}
 
 	/**

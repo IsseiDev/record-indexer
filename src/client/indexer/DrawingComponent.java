@@ -37,7 +37,7 @@ public class DrawingComponent extends JComponent {
 	private BasicStroke stroke;
 	
 	
-	public DrawingComponent() throws MalformedURLException {
+	public DrawingComponent(String imageLocation) throws MalformedURLException {
 		w_originX = 0;
 		w_originY = 0;
 		scale = 1.0;
@@ -58,7 +58,7 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		Image bufferedImage = loadImage(new URL("http://localhost:8080/images/1890_image0.png"));
+		Image bufferedImage = loadImage(imageLocation);
 		w_originX = bufferedImage.getWidth(null)/2;
 		w_originY = bufferedImage.getHeight(null)/2;
 		shapes.add(new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale)));
@@ -87,9 +87,9 @@ public class DrawingComponent extends JComponent {
 		}
 	}
 	
-	private Image loadImage(URL imageFile) {
+	private Image loadImage(String imageFile) {
 		try {
-			return ImageIO.read(imageFile);
+			return ImageIO.read(new URL(imageFile));
 		}
 		catch (IOException e) {
 			return NULL_IMAGE;
@@ -413,6 +413,115 @@ public class DrawingComponent extends JComponent {
 		public void setText(String value) {
 			text = value;
 		}
+	}
+
+
+	public static Image getNULL_IMAGE() {
+		return NULL_IMAGE;
+	}
+
+	public static void setNULL_IMAGE(Image nULL_IMAGE) {
+		NULL_IMAGE = nULL_IMAGE;
+	}
+
+	public int getW_originX() {
+		return w_originX;
+	}
+
+	public void setW_originX(int w_originX) {
+		this.w_originX = w_originX;
+	}
+
+	public int getW_originY() {
+		return w_originY;
+	}
+
+	public void setW_originY(int w_originY) {
+		this.w_originY = w_originY;
+	}
+
+	public boolean isDragging() {
+		return dragging;
+	}
+
+	public void setDragging(boolean dragging) {
+		this.dragging = dragging;
+	}
+
+	public int getW_dragStartX() {
+		return w_dragStartX;
+	}
+
+	public void setW_dragStartX(int w_dragStartX) {
+		this.w_dragStartX = w_dragStartX;
+	}
+
+	public int getW_dragStartY() {
+		return w_dragStartY;
+	}
+
+	public void setW_dragStartY(int w_dragStartY) {
+		this.w_dragStartY = w_dragStartY;
+	}
+
+	public int getW_dragStartOriginX() {
+		return w_dragStartOriginX;
+	}
+
+	public void setW_dragStartOriginX(int w_dragStartOriginX) {
+		this.w_dragStartOriginX = w_dragStartOriginX;
+	}
+
+	public int getW_dragStartOriginY() {
+		return w_dragStartOriginY;
+	}
+
+	public void setW_dragStartOriginY(int w_dragStartOriginY) {
+		this.w_dragStartOriginY = w_dragStartOriginY;
+	}
+
+	public ArrayList<DrawingShape> getShapes() {
+		return shapes;
+	}
+
+	public void setShapes(ArrayList<DrawingShape> shapes) {
+		this.shapes = shapes;
+	}
+
+	public Font getFont() {
+		return font;
+	}
+
+	public void setFont(Font font) {
+		this.font = font;
+	}
+
+	public BasicStroke getStroke() {
+		return stroke;
+	}
+
+	public void setStroke(BasicStroke stroke) {
+		this.stroke = stroke;
+	}
+
+	public MouseAdapter getMouseAdapter() {
+		return mouseAdapter;
+	}
+
+	public void setMouseAdapter(MouseAdapter mouseAdapter) {
+		this.mouseAdapter = mouseAdapter;
+	}
+
+	public ComponentAdapter getComponentAdapter() {
+		return componentAdapter;
+	}
+
+	public void setComponentAdapter(ComponentAdapter componentAdapter) {
+		this.componentAdapter = componentAdapter;
+	}
+
+	public double getScale() {
+		return scale;
 	}
 	
 }

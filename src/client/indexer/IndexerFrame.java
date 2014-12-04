@@ -25,7 +25,7 @@ public class IndexerFrame extends JFrame {
 	JMenuItem logout;
 	JMenuItem exit;
 	
-	JPanel image;
+	ImagePanel image;
 	JTabbedPane bottomLeftPane;
 	JTabbedPane bottomRightPane;
 	JPanel tableEntry;
@@ -99,7 +99,7 @@ public class IndexerFrame extends JFrame {
 		mainSplitter.setRightComponent(bottomSplitter);
 		
 		//Initialize the Panels
-		image = new ImagePanel();
+		image = new ImagePanel("http://localhost:8080/images/draft_image3.png");
 		tableEntry = new TablePanel();
 		formEntry = new FormPanel();
 		
@@ -138,16 +138,6 @@ public class IndexerFrame extends JFrame {
 		
 		this.setJMenuBar(menuBar);
 
-		
-
-		
-		
-		//Setting the output pane
-		//outputPane = new JScrollPane();
-		//outputPane.setBounds(10, 100, 210, 200);
-		//this.add(outputPane);
-		
-
 		// Set the location of the window on the desktop
 		this.setLocation(100, 100);
 
@@ -169,5 +159,149 @@ public class IndexerFrame extends JFrame {
 	{
 		DownloadFrame download = new DownloadFrame(controller);
 		download.setVisible(true);
+	}
+
+	public JMenu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(JMenu menu) {
+		this.menu = menu;
+	}
+
+	public JMenuItem getDownloadBatch() {
+		return downloadBatch;
+	}
+
+	public void setDownloadBatch(JMenuItem downloadBatch) {
+		this.downloadBatch = downloadBatch;
+	}
+
+	public JMenuItem getLogout() {
+		return logout;
+	}
+
+	public void setLogout(JMenuItem logout) {
+		this.logout = logout;
+	}
+
+	public JMenuItem getExit() {
+		return exit;
+	}
+
+	public void setExit(JMenuItem exit) {
+		this.exit = exit;
+	}
+
+	public ImagePanel getImage() {
+		return image;
+	}
+
+	public void setImage(ImagePanel image) {
+		this.image = image;
+	}
+
+	public JTabbedPane getBottomLeftPane() {
+		return bottomLeftPane;
+	}
+
+	public void setBottomLeftPane(JTabbedPane bottomLeftPane) {
+		this.bottomLeftPane = bottomLeftPane;
+	}
+
+	public JTabbedPane getBottomRightPane() {
+		return bottomRightPane;
+	}
+
+	public void setBottomRightPane(JTabbedPane bottomRightPane) {
+		this.bottomRightPane = bottomRightPane;
+	}
+
+	public JPanel getTableEntry() {
+		return tableEntry;
+	}
+
+	public void setTableEntry(JPanel tableEntry) {
+		this.tableEntry = tableEntry;
+	}
+
+	public JPanel getFormEntry() {
+		return formEntry;
+	}
+
+	public void setFormEntry(JPanel formEntry) {
+		this.formEntry = formEntry;
+	}
+
+	public JPanel getFieldHelp() {
+		return fieldHelp;
+	}
+
+	public void setFieldHelp(JPanel fieldHelp) {
+		this.fieldHelp = fieldHelp;
+	}
+
+	public JPanel getImageNav() {
+		return imageNav;
+	}
+
+	public void setImageNav(JPanel imageNav) {
+		this.imageNav = imageNav;
+	}
+
+	public JButton getZoomInButton() {
+		return zoomInButton;
+	}
+
+	public void setZoomInButton(JButton zoomInButton) {
+		this.zoomInButton = zoomInButton;
+	}
+
+	public JButton getZoomOutButton() {
+		return zoomOutButton;
+	}
+
+	public void setZoomOutButton(JButton zoomOutButton) {
+		this.zoomOutButton = zoomOutButton;
+	}
+
+	public JButton getInvertButton() {
+		return invertButton;
+	}
+
+	public void setInvertButton(JButton invertButton) {
+		this.invertButton = invertButton;
+	}
+
+	public JButton getHighlightsButton() {
+		return highlightsButton;
+	}
+
+	public void setHighlightsButton(JButton highlightsButton) {
+		this.highlightsButton = highlightsButton;
+	}
+
+	public JButton getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(JButton saveButton) {
+		this.saveButton = saveButton;
+	}
+
+	public JButton getSubmitButton() {
+		return submitButton;
+	}
+
+	public void setSubmitButton(JButton submitButton) {
+		this.submitButton = submitButton;
+	}
+
+	public FrameController getController() {
+		return controller;
+	}
+
+	public void setController(FrameController controller) {
+		this.controller = controller;
 	}
 }

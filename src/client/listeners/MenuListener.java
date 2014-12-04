@@ -21,7 +21,7 @@ public class MenuListener implements ActionListener{
 		// TODO Auto-generated method stub
 		if(type == "download")
 		{
-			System.out.println("Download dat Batch!");
+			indexer.downloadBatch();
 		}
 		else if(type == "logout")
 		{

@@ -29,7 +29,7 @@ public class GetSampleImage_Result {
 	
 	public String toURLString(String host, String port)
 	{
-		return "http://" + host + ":" + port + File.separator + image_url + "\n";
+		return "http://" + host + ":" + port + "/" + image_url + "\n";
 	}
 	
 	

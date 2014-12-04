@@ -13,6 +13,8 @@ import javax.swing.*;
 
 import java.util.*;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 @SuppressWarnings("serial")
@@ -22,8 +24,6 @@ public class DrawingComponent extends JComponent {
 	
 	private int w_originX;
 	private int w_originY;
-	private double w_centerX;
-	private double w_centerY;
 	private double scale;
 	
 	private boolean dragging;
@@ -36,11 +36,10 @@ public class DrawingComponent extends JComponent {
 	private Font font;
 	private BasicStroke stroke;
 	
-	public DrawingComponent() {
+	
+	public DrawingComponent() throws MalformedURLException {
 		w_originX = 0;
 		w_originY = 0;
-		w_centerX = getWidth() / 2.0;
-		w_centerY = getHeight() / 2.0;
 		scale = 1.0;
 		
 		initDrag();
@@ -50,7 +49,7 @@ public class DrawingComponent extends JComponent {
 		font = new Font("SansSerif", Font.PLAIN, 72);
 		stroke = new BasicStroke(5);
 		
-		this.setPreferredSize(new Dimension(700, 400));
+		this.setPreferredSize(new Dimension(900, 400));
 		this.setMinimumSize(new Dimension(100, 100));
 		this.setMaximumSize(new Dimension(1000, 1000));
 		
@@ -59,10 +58,10 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		Image spongebob = loadImage("/users//guest//d//dnorth2//workspace//record-indexer//Records//images//1890_image0.png");
-		w_originX = spongebob.getWidth(null)/2;
-		w_originY = spongebob.getHeight(null)/2;
-		shapes.add(new DrawingImage(spongebob, new Rectangle2D.Double(50, 250, spongebob.getWidth(null) * scale, spongebob.getHeight(null) * scale)));
+		Image bufferedImage = loadImage(new URL("http://localhost:8080/images/1890_image0.png"));
+		w_originX = bufferedImage.getWidth(null)/2;
+		w_originY = bufferedImage.getHeight(null)/2;
+		shapes.add(new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale)));
 				
 	}
 	
@@ -88,9 +87,9 @@ public class DrawingComponent extends JComponent {
 		}
 	}
 	
-	private Image loadImage(String imageFile) {
+	private Image loadImage(URL imageFile) {
 		try {
-			return ImageIO.read(new File(imageFile));
+			return ImageIO.read(imageFile);
 		}
 		catch (IOException e) {
 			return NULL_IMAGE;
@@ -222,11 +221,11 @@ public class DrawingComponent extends JComponent {
 			int notches = e.getWheelRotation();
 			if(notches < 0)
 			{
-				setScale(scale - 0.05);
+				setScale(scale + 0.20);
 			} 
 			else
 			{
-				setScale(scale + 0.05);
+				setScale(scale - 0.20);
 			}
 			
 		}

@@ -1,14 +1,15 @@
 package client.UI;
 
+
 import java.util.Vector;
 
-
-
-
+import server.database.DatabaseException;
 import shared.communication.GetProjects_Result;
 import shared.communication.GetProjects_Result.ProjectInfo;
 import shared.communication.GetFields_Params;
 import shared.communication.GetFields_Result;
+import shared.communication.GetSampleImage_Params;
+import shared.communication.GetSampleImage_Result;
 import shared.communication.Search_Params;
 import shared.communication.Search_Result;
 import shared.communication.ValidateUser_Params;
@@ -31,6 +32,7 @@ public class FrameController {
 	String password = "test1";
 	String hostname = "localhost";
 	String port = "8080";
+	GetProjects_Result proResult;
 
 	
 	public void runLogin(String hostname, String port)
@@ -116,7 +118,6 @@ public class FrameController {
 	
 	public Vector<String> getProjects()
 	{		
-		GetProjects_Result proResult;
 		Vector<String> result = new Vector<String>();
 		
 		try {
@@ -134,6 +135,28 @@ public class FrameController {
 		}
 		
 		return result;
+	}
+	
+	public String getSampleImage(String projectName) throws ClientException, DatabaseException {
+		
+		int projectID = 0;
+		GetSampleImage_Result samResult = null;
+		
+		for(ProjectInfo pi : proResult.getInfo())
+		{
+			if(pi.getProject_title().equals(projectName))
+			{
+				projectID = pi.getProject_id();
+			}
+		}
+
+		try {
+			samResult= cc.Sample_Image(new GetSampleImage_Params(projectID));
+		} catch (ClientException e) {
+			System.out.println("Could not connect with the server.");
+		}
+		
+		return samResult.toURLString(hostname, port);
 	}
 	
 	public GetFields_Result getFields(int projectID) {

@@ -1,12 +1,9 @@
 package client.indexer;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -14,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
 
 import client.UI.FrameController;
 import client.listeners.MenuListener;
@@ -26,6 +24,14 @@ public class IndexerFrame extends JFrame {
 	JMenuItem downloadBatch;
 	JMenuItem logout;
 	JMenuItem exit;
+	
+	JPanel image;
+	JTabbedPane bottomLeftPane;
+	JTabbedPane bottomRightPane;
+	JPanel tableEntry;
+	JPanel formEntry;
+	JPanel fieldHelp;
+	JPanel imageNav;
 	
 	//All of the buttons
 	JButton zoomInButton;
@@ -78,6 +84,7 @@ public class IndexerFrame extends JFrame {
 		JSplitPane mainSplitter = new JSplitPane();
 		mainSplitter.setContinuousLayout(true);
 		mainSplitter.setResizeWeight(0.5);
+		mainSplitter.setDividerLocation(400);
 		mainSplitter.setOrientation(JSplitPane.VERTICAL_SPLIT);
 		GridBagConstraints gbc_mainSplitter = new GridBagConstraints();
 		gbc_mainSplitter.fill = GridBagConstraints.BOTH;
@@ -90,14 +97,24 @@ public class IndexerFrame extends JFrame {
 		bottomSplitter.setContinuousLayout(true);
 		bottomSplitter.setResizeWeight(0.5);
 		mainSplitter.setRightComponent(bottomSplitter);
-		 
-		JPanel image = new ImagePanel();
-		JPanel table = new JPanel();
-		JPanel imagenav = new JPanel();
+		
+		//Initialize the Panels
+		image = new ImagePanel();
+		tableEntry = new TablePanel();
+		formEntry = new FormPanel();
+		
+		bottomLeftPane = new JTabbedPane(JTabbedPane.TOP);
+		bottomRightPane = new JTabbedPane(JTabbedPane.TOP);
 		
 				
-		bottomSplitter.setLeftComponent(table);
-		bottomSplitter.setRightComponent(imagenav);
+		bottomSplitter.setLeftComponent(bottomLeftPane);
+		bottomSplitter.setRightComponent(bottomRightPane);
+		
+		bottomLeftPane.addTab("Table Entry", tableEntry);
+		bottomLeftPane.addTab("Form Entry", formEntry);
+		
+		bottomRightPane.addTab("Image Navigation", imageNav);
+		bottomRightPane.addTab("Field Help", fieldHelp);
 
 		mainSplitter.setLeftComponent(image);
 		
@@ -146,5 +163,11 @@ public class IndexerFrame extends JFrame {
 	public void logout()
 	{
 		controller.logout();
+	}
+	
+	public void downloadBatch()
+	{
+		DownloadFrame download = new DownloadFrame(controller);
+		download.setVisible(true);
 	}
 }

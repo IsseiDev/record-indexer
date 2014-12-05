@@ -6,22 +6,37 @@ import java.net.MalformedURLException;
 
 import javax.swing.JPanel;
 
+import client.UI.BatchState;
+import client.listeners.BatchStateListener;
+
 @SuppressWarnings("serial")
-public class ImagePanel extends JPanel{
+public class ImagePanel extends JPanel implements BatchStateListener{
 	
 	DrawingComponent component;
 
-	public ImagePanel(String imageLocation){
+	public ImagePanel(BatchState stateInfo){
 		this.setBackground(Color.GRAY);
 		
 		try {
-			component = new DrawingComponent(imageLocation);
+			component = new DrawingComponent(stateInfo.getImageLocation());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		this.add(component, BorderLayout.CENTER);
+	}
+
+	@Override
+	public void valueChanged(Cell cell, String newValue) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void selectedCellChanged(Cell newSelectedCell) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public DrawingComponent getDrawComponent() {
@@ -31,4 +46,5 @@ public class ImagePanel extends JPanel{
 	public void setDrawComponent(DrawingComponent component) {
 		this.component = component;
 	}
+
 }

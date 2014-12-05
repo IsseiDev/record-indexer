@@ -11,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import client.UI.BatchState;
 import client.UI.FrameController;
 import client.listeners.LoginButtonListener;
 

@@ -1,57 +1,32 @@
 package client.indexer;
 
 
-import java.awt.*;
 import javax.swing.table.*;
+
+import client.UI.BatchState;
 
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
-
-	public TableModel() {
+	
+	BatchState stateInfo;
+	
+	public TableModel(BatchState stateInfo) {
+		this.stateInfo = stateInfo;
 	}
 
 	@Override
 	public int getColumnCount() {
-		return 5;
+		return stateInfo.getFieldCount();
 	}
 
 	@Override
 	public String getColumnName(int column) {
-
-		String result = null;
-
-		if (column >= 0 && column < getColumnCount()) {
-
-			switch (column) {
-			case 0:
-				result = "Scheme Name";
-				break;
-			case 1:
-				result = "Foreground";
-				break;
-			case 2:
-				result = "Background";
-				break;
-			case 3:
-				result = "Highlight";
-				break;
-			case 4:
-				result = "Shadow";
-				break;
-			default:
-				assert false;
-				break;
-			}
-		} else {
-			throw new IndexOutOfBoundsException();
-		}
-
-		return result;
+		return stateInfo.getFieldName(column);
 	}
 
 	@Override
 	public int getRowCount() {
-		return 5;
+		return stateInfo.getRecordCount();
 	}
 
 	@Override
@@ -67,27 +42,14 @@ public class TableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int row, int column) {
 
-		String result = "hello";
+		return stateInfo.getValue(new Cell(row, column));	
 
-		return result;
 	}
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
 		
-		if (row >= 0 && row < getRowCount() && column >= 0
-				&& column < getColumnCount()) {
-
-			
-			if (column > 0) {
-				
-			}
-			
-			this.fireTableCellUpdated(row, column);
-			
-		} else {
-			throw new IndexOutOfBoundsException();
-		}		
+		stateInfo.setValue(new Cell(row, column), (String)value);	
 	}
 
 }

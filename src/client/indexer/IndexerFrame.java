@@ -20,6 +20,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import client.UI.BatchState;
 import client.UI.FrameController;
 import client.listeners.IndexerButtonListener;
 import client.listeners.MenuListener;
@@ -50,8 +51,9 @@ public class IndexerFrame extends JFrame {
 	JButton submitButton;
 	
 	FrameController controller;
+	BatchState stateInfo;
 	
-	public IndexerFrame(FrameController controller) {
+	public IndexerFrame(FrameController controller, BatchState stateInfo) {
 		
 		this.controller = controller;
 		// Set the window's title
@@ -85,10 +87,10 @@ public class IndexerFrame extends JFrame {
 		mainSplitter.setRightComponent(bottomSplitter);
 		
 		//Initialize the Panels
-		image = new ImagePanel("http://localhost:8080/images/draft_image3.png");		
+		image = new ImagePanel(stateInfo);		
 		
 		//Creating the table to pass in
-		TableModel tableModel = new TableModel();
+		TableModel tableModel = new TableModel(stateInfo);
 		JTable table = new JTable(tableModel);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setCellSelectionEnabled(true);

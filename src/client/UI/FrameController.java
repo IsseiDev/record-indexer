@@ -35,6 +35,7 @@ public class FrameController {
 	String hostname = "localhost";
 	String port = "8080";
 	GetProjects_Result proResult;
+	BatchState stateInfo;
 
 	
 	public void runLogin(String hostname, String port)
@@ -45,8 +46,11 @@ public class FrameController {
 		}
 		this.port = port;
 		
+		//TO DO - This needs to be changed based on whether or not that person has information already
+		stateInfo = new BatchState(5, 5);
+		
 		loginFrame = new LoginFrame(this);
-		indexerFrame = new IndexerFrame(this);
+		indexerFrame = new IndexerFrame(this, stateInfo);
 		loginFrame.setVisible(true);
 		indexerFrame.setVisible(false);
 	}
@@ -72,8 +76,12 @@ public class FrameController {
 	
 	public void testIndexer()
 	{
+		//TO DO - This needs to be changed based on whether or not that person has information already
+		stateInfo = new BatchState(5, 5);
+		stateInfo.setDummyFields();
+		
 		loginFrame = new LoginFrame(this);
-		indexerFrame = new IndexerFrame(this);
+		indexerFrame = new IndexerFrame(this, stateInfo);
 		indexerFrame.setVisible(true);
 		loginFrame.setVisible(false);
 	}
@@ -200,7 +208,9 @@ public class FrameController {
 			System.out.println("Could not connect with the server.");
 		}
 		
-		//indexerFrame.set
+		//TODO Get All Fields and All Records for this batch
+		
+		//batchResult.get
 		
 		return batchResult;
 	}

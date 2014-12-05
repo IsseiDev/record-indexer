@@ -12,7 +12,6 @@ import javax.imageio.*;
 import javax.swing.*;
 
 import client.UI.BatchState;
-import client.UI.BatchState.Cell;
 
 import java.util.*;
 import java.io.*;

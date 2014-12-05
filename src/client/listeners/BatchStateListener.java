@@ -1,5 +1,6 @@
 package client.listeners;
-import client.UI.BatchState.Cell;
+
+import client.indexer.Cell;
 
 public interface BatchStateListener {
 	

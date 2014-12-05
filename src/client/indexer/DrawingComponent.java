@@ -20,7 +20,7 @@ import java.net.URL;
 @SuppressWarnings("serial")
 public class DrawingComponent extends JComponent {
 
-	private static Image NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+	private static BufferedImage NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
 	
 	private int w_originX;
 	private int w_originY;
@@ -35,6 +35,8 @@ public class DrawingComponent extends JComponent {
 	private ArrayList<DrawingShape> shapes;
 	private Font font;
 	private BasicStroke stroke;
+	
+	BufferedImage bufferedImage;
 	
 	
 	public DrawingComponent(String imageLocation) throws MalformedURLException {
@@ -58,11 +60,16 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		Image bufferedImage = loadImage(imageLocation);
+		bufferedImage = loadImage(imageLocation);
 		w_originX = bufferedImage.getWidth(null)/2;
 		w_originY = bufferedImage.getHeight(null)/2;
 		shapes.add(new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale)));
 				
+	}
+	
+	public void invertImage(){
+		bufferedImage = new RescaleOp(-1.0f, 255.0f, null).filter(getBufferedImage(), null);
+		this.repaint();
 	}
 	
 	private void initDrag() {
@@ -87,7 +94,7 @@ public class DrawingComponent extends JComponent {
 		}
 	}
 	
-	private Image loadImage(String imageFile) {
+	private BufferedImage loadImage(String imageFile) {
 		try {
 			return ImageIO.read(new URL(imageFile));
 		}
@@ -420,7 +427,7 @@ public class DrawingComponent extends JComponent {
 		return NULL_IMAGE;
 	}
 
-	public static void setNULL_IMAGE(Image nULL_IMAGE) {
+	public static void setNULL_IMAGE(BufferedImage nULL_IMAGE) {
 		NULL_IMAGE = nULL_IMAGE;
 	}
 
@@ -522,6 +529,14 @@ public class DrawingComponent extends JComponent {
 
 	public double getScale() {
 		return scale;
+	}
+
+	public BufferedImage getBufferedImage() {
+		return bufferedImage;
+	}
+
+	public void setBufferedImage(BufferedImage bufferedImage) {
+		this.bufferedImage = bufferedImage;
 	}
 	
 }

@@ -192,7 +192,7 @@ public class FrameController {
 		
 		System.out.println("The Name: " + projectName + " and ID: " + projectID);
 		
-		indexerFrame.getImage().getDrawComponent().getShapes().clear();
+		indexerFrame.getImagePanel().getDrawComponent().getShapes().clear();
 		
 		try {
 			batchResult = cc.Download_Batch(new DownloadBatch_Params(username, password, projectID));

@@ -21,6 +21,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import client.UI.FrameController;
+import client.listeners.IndexerButtonListener;
 import client.listeners.MenuListener;
 
 @SuppressWarnings("serial")
@@ -65,28 +66,6 @@ public class IndexerFrame extends JFrame {
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		this.getContentPane().setLayout(gridBagLayout);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 900, 40);
-		zoomInButton = new JButton("Zoom In");
-		panel.add(zoomInButton);
-		zoomOutButton = new JButton("Zoom Out");
-		panel.add(zoomOutButton);
-		invertButton = new JButton("Invert Image");
-		panel.add(invertButton);
-		highlightsButton = new JButton("Toggle Highlights");
-		panel.add(highlightsButton);
-		saveButton = new JButton("Save");
-		panel.add(saveButton);
-		submitButton = new JButton("Submit");
-		panel.add(submitButton);
-		
-		GridBagConstraints gbc_actions = new GridBagConstraints();
-		gbc_actions.insets = new Insets(3, 0, 2, 0);
-		gbc_actions.anchor = GridBagConstraints.WEST;
-		gbc_actions.gridx = 0;
-		gbc_actions.gridy = 0;
-		this.getContentPane().add(panel, gbc_actions);
 		
 		JSplitPane mainSplitter = new JSplitPane();
 		mainSplitter.setContinuousLayout(true);
@@ -158,6 +137,34 @@ public class IndexerFrame extends JFrame {
 		menuBar.add(menu);
 		
 		this.setJMenuBar(menuBar);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 10, 900, 40);
+		zoomInButton = new JButton("Zoom In");
+		zoomInButton.addActionListener(new IndexerButtonListener(this, "zoomIn"));
+		panel.add(zoomInButton);
+		zoomOutButton = new JButton("Zoom Out");
+		zoomOutButton.addActionListener(new IndexerButtonListener(this, "zoomOut"));
+		panel.add(zoomOutButton);
+		invertButton = new JButton("Invert Image");
+		invertButton.addActionListener(new IndexerButtonListener(this, "invert"));
+		panel.add(invertButton);
+		highlightsButton = new JButton("Toggle Highlights");
+		highlightsButton.addActionListener(new IndexerButtonListener(this, "toggle"));
+		panel.add(highlightsButton);
+		saveButton = new JButton("Save");
+		saveButton.addActionListener(new IndexerButtonListener(this, "save"));
+		panel.add(saveButton);
+		submitButton = new JButton("Submit");
+		submitButton.addActionListener(new IndexerButtonListener(this, "submit"));
+		panel.add(submitButton);
+		
+		GridBagConstraints gbc_actions = new GridBagConstraints();
+		gbc_actions.insets = new Insets(3, 0, 2, 0);
+		gbc_actions.anchor = GridBagConstraints.WEST;
+		gbc_actions.gridx = 0;
+		gbc_actions.gridy = 0;
+		this.getContentPane().add(panel, gbc_actions);
 
 		// Set the location of the window on the desktop
 		this.setLocation(100, 100);
@@ -214,11 +221,11 @@ public class IndexerFrame extends JFrame {
 		this.exit = exit;
 	}
 
-	public ImagePanel getImage() {
+	public ImagePanel getImagePanel() {
 		return image;
 	}
 
-	public void setImage(ImagePanel image) {
+	public void setImagePanel(ImagePanel image) {
 		this.image = image;
 	}
 

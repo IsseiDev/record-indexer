@@ -3,21 +3,9 @@ package client.UI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sychronization {
+import client.listeners.BatchStateListener;
 
-	class Cell {
-		int record;
-		int field;
-	}
-	
-	interface BatchStateListener {
-		
-		public void valueChanged(Cell cell, String newValue);
-		
-		public void selectedCellChanged(Cell newSelectedCell);
-	}
-	
-	class BatchState {
+public class BatchState {
 		
 		private String[][] values;
 		private Cell selectedCell;
@@ -35,7 +23,7 @@ public class Sychronization {
 		
 		public void setValue(Cell cell, String value) {
 			
-			values[cell.record][cell.field] = value;
+			values[cell.row][cell.col] = value;
 			
 			for (BatchStateListener l : listeners) {
 				l.valueChanged(cell, value);
@@ -43,7 +31,7 @@ public class Sychronization {
 		}
 		
 		public String getValue(Cell cell) {
-			return values[cell.record][cell.field];
+			return values[cell.row][cell.col];
 		}
 		
 		public void setSelectedCell(Cell selCell) {
@@ -58,7 +46,9 @@ public class Sychronization {
 		public Cell getSelectedCell() {
 			return selectedCell;
 		}
-	}
 
-	
-}
+		public class Cell {
+			int row;
+			int col;
+		}
+	}

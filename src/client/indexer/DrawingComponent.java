@@ -11,6 +11,9 @@ import java.awt.event.*;
 import javax.imageio.*;
 import javax.swing.*;
 
+import client.UI.BatchState;
+import client.UI.BatchState.Cell;
+
 import java.util.*;
 import java.io.*;
 import java.net.MalformedURLException;
@@ -39,6 +42,7 @@ public class DrawingComponent extends JComponent {
 	BufferedImage bufferedImage;
 	DrawingImage picture;
 	
+	BatchState model;
 	
 	public DrawingComponent(String imageLocation) throws MalformedURLException {
 		w_originX = 0;
@@ -107,8 +111,11 @@ public class DrawingComponent extends JComponent {
 	}
 	
 	public void setScale(double newScale) {
-		scale = newScale;
-		this.repaint();
+		if(newScale >= 0.41 && newScale <= 4.1)
+		{
+			scale = newScale;
+			this.repaint();
+		}
 	}
 	
 	public void setOrigin(int w_newOriginX, int w_newOriginY) {
@@ -146,6 +153,13 @@ public class DrawingComponent extends JComponent {
 	
 	private MouseAdapter mouseAdapter = new MouseAdapter() {
 
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("I clicked!");
+			//TO DO: FIGURE THIS OUT
+			//model.setSelectedCell(new Cell());
+		}
+		
 		@Override
 		public void mousePressed(MouseEvent e) {
 			int d_X = e.getX();

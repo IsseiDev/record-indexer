@@ -37,6 +37,7 @@ public class DrawingComponent extends JComponent {
 	private BasicStroke stroke;
 	
 	BufferedImage bufferedImage;
+	DrawingImage picture;
 	
 	
 	public DrawingComponent(String imageLocation) throws MalformedURLException {
@@ -63,12 +64,14 @@ public class DrawingComponent extends JComponent {
 		bufferedImage = loadImage(imageLocation);
 		w_originX = bufferedImage.getWidth(null)/2;
 		w_originY = bufferedImage.getHeight(null)/2;
-		shapes.add(new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale)));
-				
+		picture = new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale));
+		shapes.add(picture);		
 	}
 	
 	public void invertImage(){
 		bufferedImage = new RescaleOp(-1.0f, 255.0f, null).filter(getBufferedImage(), null);
+		shapes.clear();
+		shapes.add(new DrawingImage(bufferedImage, picture.getBounds(null)));		
 		this.repaint();
 	}
 	

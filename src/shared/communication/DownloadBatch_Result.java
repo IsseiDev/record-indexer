@@ -105,8 +105,11 @@ public class DownloadBatch_Result {
 		return image_url;
 	}
 
-
-
+	public String getImage_url(String hostname, String port)
+	{
+		return "http://" + hostname + ":" + port + "/" + image_url ;
+	}
+	
 	/**
 	 * @param image_url the image_url to set
 	 */

@@ -1,7 +1,12 @@
 package client.UI;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import shared.model.Field;
 import shared.model.Record;
@@ -15,10 +20,14 @@ public class BatchState {
 		
 		int recordCount = 6;
 		int fieldCount = 6;
+		int batchID;
+		int firstycoord;
+		int recordHeight;
 		private String[][] values;
 		private Cell selectedCell;
 		private List<BatchStateListener> listeners;
-		private String imageLocation = "http://localhost:8080/images/draft_image3.png";
+		private static BufferedImage NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+		private BufferedImage image = NULL_IMAGE;
 		
 		public BatchState(int recordCount, int fieldCount) {
 			
@@ -59,13 +68,14 @@ public class BatchState {
 		public Cell getSelectedCell() {
 			return selectedCell;
 		}
-
-		public String getImageLocation() {
-			return imageLocation;
-		}
-
-		public void setImageLocation(String imageLocation) {
-			this.imageLocation = imageLocation;
+		
+		public void loadImage(String imageFile) {
+			try {
+				image = ImageIO.read(new URL(imageFile));
+			}
+			catch (IOException e) {
+				image = NULL_IMAGE;
+			}
 		}
 
 		public int getRecordCount() {
@@ -105,6 +115,62 @@ public class BatchState {
 			return fields.get(fieldIndex).getTitle();
 		}
 		
+		public String[][] getValues() {
+			return values;
+		}
+
+		public void setValues(String[][] values) {
+			this.values = values;
+		}
+
+		public List<BatchStateListener> getListeners() {
+			return listeners;
+		}
+
+		public void setListeners(List<BatchStateListener> listeners) {
+			this.listeners = listeners;
+		}
+
+		public static BufferedImage getNULL_IMAGE() {
+			return NULL_IMAGE;
+		}
+
+		public static void setNULL_IMAGE(BufferedImage nULL_IMAGE) {
+			NULL_IMAGE = nULL_IMAGE;
+		}
+
+		public BufferedImage getImage() {
+			return image;
+		}
+
+		public void setImage(BufferedImage image) {
+			this.image = image;
+		}
+
+		public int getBatchID() {
+			return batchID;
+		}
+
+		public void setBatchID(int batchID) {
+			this.batchID = batchID;
+		}
+
+		public int getFirstycoord() {
+			return firstycoord;
+		}
+
+		public void setFirstycoord(int firstycoord) {
+			this.firstycoord = firstycoord;
+		}
+
+		public int getRecordHeight() {
+			return recordHeight;
+		}
+
+		public void setRecordHeight(int recordHeight) {
+			this.recordHeight = recordHeight;
+		}
+
 		public void setDummyFields(){
 			fields = new ArrayList<Field>();
 			Field f = new Field();

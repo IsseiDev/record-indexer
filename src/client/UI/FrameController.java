@@ -1,7 +1,18 @@
 package client.UI;
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Vector;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import server.database.DatabaseException;
 import shared.communication.DownloadBatch_Params;
@@ -36,7 +47,8 @@ public class FrameController {
 	String port = "8080";
 	GetProjects_Result proResult;
 	BatchState stateInfo;
-
+	XStream xStream;
+	OutputStream outFile;
 	
 	public void runLogin(String hostname, String port)
 	{
@@ -112,6 +124,11 @@ public class FrameController {
 				String indexedMessage = "You have indexed " + result.getNum_records() + " records.";
 				welcome = new WelcomeFrame(this, welcomeMessage, indexedMessage);
 				welcome.setVisible(true);
+								
+				if(result.getCurrent_batch() != -1)
+				{
+					loadUser();
+				}
 				
 				runIndexer();
 			}
@@ -199,15 +216,22 @@ public class FrameController {
 		projectID = getIDfromProjectName(projectName);
 		
 		System.out.println("The Name: " + projectName + " and ID: " + projectID);
-		
-		indexerFrame.getImagePanel().getDrawComponent().getShapes().clear();
-		
+				
 		try {
 			batchResult = cc.Download_Batch(new DownloadBatch_Params(username, password, projectID));
 		} catch (ClientException e) {
 			System.out.println("Could not connect with the server.");
 		}
 		
+		if(batchResult != null)
+		{
+			stateInfo.setBatchID(batchResult.getBatch_id());
+			stateInfo.loadImage(batchResult.getImage_url(hostname, port));
+			stateInfo.setFirstycoord(batchResult.getFirst_y_coord());
+			stateInfo.setRecordHeight(batchResult.getRecord_height());
+			stateInfo.setFields(batchResult.getFields());
+			
+		}
 		//TODO Get All Fields and All Records for this batch
 		
 		//batchResult.get
@@ -228,6 +252,32 @@ public class FrameController {
 		}
 		
 		return projectID;
+	}
+	
+	public void saveUser()
+	{
+		xStream = new XStream(new DomDriver()); 
+
+		try {
+			outFile = new BufferedOutputStream(new FileOutputStream( username + ".xml"));
+			xStream.toXML(stateInfo, outFile); // This writes your batchstate to the outputFile;
+			outFile.close(); //close the writer
+		} catch (IOException e) {
+			e.printStackTrace();
+		} //Makes a xml file with the person's username
+
+	}
+	
+	public void loadUser()
+	{
+		try {
+			InputStream	inFile = new BufferedInputStream(new FileInputStream(username + ".xml")); //find the file with the given username
+			stateInfo = (BatchState) xStream.fromXML(inFile); //Read that batchstate back in to the exact form it was before
+			inFile.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

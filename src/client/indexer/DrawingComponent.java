@@ -38,18 +38,19 @@ public class DrawingComponent extends JComponent {
 	private Font font;
 	private BasicStroke stroke;
 	
-	BufferedImage bufferedImage;
 	DrawingImage picture;
 	
 	BatchState model;
+	BufferedImage bufferedImage;
 	
-	public DrawingComponent(String imageLocation) throws MalformedURLException {
+	public DrawingComponent(BufferedImage bufferedImage) throws MalformedURLException {
 		w_originX = 0;
 		w_originY = 0;
 		scale = 1.0;
 		
 		initDrag();
-
+		this.bufferedImage = bufferedImage;
+		
 		shapes = new ArrayList<DrawingShape>();
 		
 		font = new Font("SansSerif", Font.PLAIN, 72);
@@ -64,7 +65,6 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		bufferedImage = loadImage(imageLocation);
 		w_originX = bufferedImage.getWidth(null)/2;
 		w_originY = bufferedImage.getHeight(null)/2;
 		picture = new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale));
@@ -100,14 +100,6 @@ public class DrawingComponent extends JComponent {
 		}
 	}
 	
-	private BufferedImage loadImage(String imageFile) {
-		try {
-			return ImageIO.read(new URL(imageFile));
-		}
-		catch (IOException e) {
-			return NULL_IMAGE;
-		}
-	}
 	
 	public void setScale(double newScale) {
 		if(newScale >= 0.41 && newScale <= 4.1)

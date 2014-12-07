@@ -10,7 +10,7 @@ import client.UI.BatchState;
 import client.listeners.BatchStateListener;
 
 @SuppressWarnings("serial")
-public class ImagePanel extends JPanel implements BatchStateListener{
+public class ImagePanel extends JPanel{
 	
 	DrawingComponent component;
 
@@ -18,25 +18,29 @@ public class ImagePanel extends JPanel implements BatchStateListener{
 		this.setBackground(Color.GRAY);
 		
 		try {
-			component = new DrawingComponent(stateInfo.getImageLocation());
+			component = new DrawingComponent(stateInfo.getImage());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		this.add(component, BorderLayout.CENTER);
-	}
-
-	@Override
-	public void valueChanged(Cell cell, String newValue) {
-		// TODO Auto-generated method stub
 		
-	}
+		stateInfo.addListener(new BatchStateListener(){
 
-	@Override
-	public void selectedCellChanged(Cell newSelectedCell) {
-		// TODO Auto-generated method stub
-		
+			@Override
+			public void valueChanged(Cell cell, String newValue) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void selectedCellChanged(Cell newSelectedCell) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
 
 	public DrawingComponent getDrawComponent() {

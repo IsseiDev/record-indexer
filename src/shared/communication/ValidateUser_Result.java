@@ -5,16 +5,18 @@ public class ValidateUser_Result {
 	String user_first_name;
 	String user_last_name;
 	int num_records;
+	int current_batch;
 	/**
 	 * @param user_first_name
 	 * @param user_last_name
 	 * @param num_records
 	 */
 	public ValidateUser_Result(String user_first_name,
-			String user_last_name, int num_records) {
+			String user_last_name, int num_records, int current_batch) {
 		this.user_first_name = user_first_name;
 		this.user_last_name = user_last_name;
 		this.num_records = num_records;
+		this.current_batch = current_batch;
 	}
 	/**
 	 * @return the user_first_name
@@ -53,6 +55,12 @@ public class ValidateUser_Result {
 		this.num_records = num_records;
 	}
 	
+	public int getCurrent_batch() {
+		return current_batch;
+	}
+	public void setCurrent_batch(int current_batch) {
+		this.current_batch = current_batch;
+	}
 	@Override
 	public String toString()
 	{

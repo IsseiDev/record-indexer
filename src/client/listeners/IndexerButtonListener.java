@@ -41,7 +41,7 @@ public class IndexerButtonListener implements ActionListener{
 		}
 		else if(type == "save")
 		{
-			
+			frame.saveState();
 		}
 		else if(type == "submit")
 		{

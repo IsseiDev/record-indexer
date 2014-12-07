@@ -39,7 +39,7 @@ public class ValidateUserHandler implements HttpHandler{
 		}
 		if(u != null)
 		{
-			ValidateUser_Result result = new ValidateUser_Result(u.getFirstname(), u.getLastname(), u.getIndexedrecords());
+			ValidateUser_Result result = new ValidateUser_Result(u.getFirstname(), u.getLastname(), u.getIndexedrecords(), u.getCurrent_batch());
 		
 			exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
 			xmlStream.toXML(result, exchange.getResponseBody());

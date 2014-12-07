@@ -185,6 +185,11 @@ public class IndexerFrame extends JFrame {
 		controller.logout();
 	}
 	
+	public void saveState()
+	{
+		controller.saveUser();
+	}
+	
 	public void downloadBatch()
 	{
 		DownloadFrame download = new DownloadFrame(controller);

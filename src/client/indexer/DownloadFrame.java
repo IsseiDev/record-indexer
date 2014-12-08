@@ -30,6 +30,7 @@ public class DownloadFrame extends JDialog{
 		this.setTitle("Download Batch");
 		this.setModal(true);
 		this.setModalityType(ModalityType.APPLICATION_MODAL);
+		this.setResizable(false);
 		
 		// Specify what should happen when the user clicks the window's close icon
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,22 +47,22 @@ public class DownloadFrame extends JDialog{
 
       
         projectsList = new JComboBox<String>(projects);
-        projectsList.setBounds(60, 10, 110, 25);
+        projectsList.setBounds(80, 10, 130, 25);
         this.add(projectsList);
         
         JButton viewSampleButton = new JButton("View Sample");
         viewSampleButton.addActionListener(new DownloadFrameListener(this, "view_sample"));
-        viewSampleButton.setBounds(175, 10, 110, 25);
+        viewSampleButton.setBounds(220, 10, 130, 25);
 		this.add(viewSampleButton);
 		
 		JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new DownloadFrameListener(this, "cancel"));
-        cancelButton.setBounds(60, 45, 80, 25);
+        cancelButton.setBounds(80, 45, 100, 25);
 		this.add(cancelButton);
 		
 		JButton downloadButton = new JButton("Download");
         downloadButton.addActionListener(new DownloadFrameListener(this, "download"));
-        downloadButton.setBounds(145, 45, 100, 25);
+        downloadButton.setBounds(185, 45, 120, 25);
 		this.add(downloadButton);
 		
 		//Setting the output pane
@@ -72,7 +73,7 @@ public class DownloadFrame extends JDialog{
 		this.setLocation(100, 100);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
-		this.setSize(315, 120);
+		this.setSize(360, 120);
 		
 	}
 	

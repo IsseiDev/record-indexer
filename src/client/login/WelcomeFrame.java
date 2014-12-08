@@ -60,7 +60,7 @@ public class WelcomeFrame extends JDialog {
 		
 		this.add(buttonPanel, BorderLayout.PAGE_END);
 		// Set the location of the window on the desktop
-		this.setLocation(100, 100);
+		this.setLocation(500, 400);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
 		this.setSize(270, 160);

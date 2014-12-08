@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import client.indexer.DrawingComponent;
 import client.indexer.IndexerFrame;
+import client.indexer.SampleImagePanel;
 
 public class IndexerButtonListener implements ActionListener{
 
 	IndexerFrame frame;
+	SampleImagePanel panel;
 	DrawingComponent drawComponent;
 	String type;
 	
@@ -16,6 +18,12 @@ public class IndexerButtonListener implements ActionListener{
 	{
 		this.frame = frame;
 		this.drawComponent  = frame.getImagePanel().getDrawComponent();
+		this.type = type;
+	}
+	
+	public IndexerButtonListener(SampleImagePanel panel, String type)
+	{
+		this.panel = panel;
 		this.type = type;
 	}
 
@@ -47,10 +55,22 @@ public class IndexerButtonListener implements ActionListener{
 		{
 			frame.submitBatch();
 		}
+		else if(type == "cancel")
+		{
+			panel.dispose();
+		}
 		else
 		{
 			System.out.println("What are you even doing?");
 		}
+	}
+
+	public DrawingComponent getDrawComponent() {
+		return drawComponent;
+	}
+
+	public void setDrawComponent(DrawingComponent drawComponent) {
+		this.drawComponent = drawComponent;
 	}
 	
 }

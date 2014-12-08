@@ -1,11 +1,8 @@
 package client.indexer;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -57,6 +54,7 @@ public class IndexerFrame extends JFrame {
 	boolean userDownloaded = false;
 	JSplitPane bottomSplitter;
 	JSplitPane mainSplitter;
+	JPanel panel = null;
 	
 	public IndexerFrame(FrameController controller, BatchState stateInfo) {
 		this.stateInfo = stateInfo;
@@ -146,36 +144,12 @@ public class IndexerFrame extends JFrame {
 		
 		this.setJMenuBar(menuBar);
 				
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 900, 40);
-		zoomInButton = new JButton("Zoom In");
-		zoomInButton.addActionListener(new IndexerButtonListener(this, "zoomIn"));
-		panel.add(zoomInButton);
-		zoomOutButton = new JButton("Zoom Out");
-		zoomOutButton.addActionListener(new IndexerButtonListener(this, "zoomOut"));
-		panel.add(zoomOutButton);
-		invertButton = new JButton("Invert Image");
-		invertButton.addActionListener(new IndexerButtonListener(this, "invert"));
-		panel.add(invertButton);
-		highlightsButton = new JButton("Toggle Highlights");
-		highlightsButton.addActionListener(new IndexerButtonListener(this, "toggle"));
-		panel.add(highlightsButton);
-		saveButton = new JButton("Save");
-		saveButton.addActionListener(new IndexerButtonListener(this, "save"));
-		panel.add(saveButton);
-		submitButton = new JButton("Submit");
-		submitButton.addActionListener(new IndexerButtonListener(this, "submit"));
-		panel.add(submitButton);
+		
 		
 
-		toggleButtons(userDownloaded);
+		createButtonPanel(userDownloaded);
 		
-		GridBagConstraints gbc_actions = new GridBagConstraints();
-		gbc_actions.insets = new Insets(3, 0, 2, 0);
-		gbc_actions.anchor = GridBagConstraints.WEST;
-		gbc_actions.gridx = 0;
-		gbc_actions.gridy = 0;
-		this.getContentPane().add(panel, gbc_actions);
+		
 
 		// Set the location of the window on the desktop
 		this.setLocation(100, 100);
@@ -233,15 +207,43 @@ public class IndexerFrame extends JFrame {
 	
 	public void updateImage()
 	{
-		mainSplitter.setLeftComponent(new ImagePanel(stateInfo));
+		image = new ImagePanel(stateInfo);
+		mainSplitter.setLeftComponent(image);
 		userDownloaded = true;
-		toggleButtons(userDownloaded);
+		createButtonPanel(userDownloaded);
 		this.validate();
 		this.repaint();
 	}
 	
-	public void toggleButtons(boolean turnOn)
+	public void createButtonPanel(boolean turnOn)
 	{
+		System.out.println("Creating a new button panel");
+		if(panel != null)
+		{
+			System.out.println("Removing old panel");
+			this.getContentPane().remove(panel);
+		}
+		panel = new JPanel();
+		panel.setBounds(10, 10, 900, 40);
+		zoomInButton = new JButton("Zoom In");
+		zoomInButton.addActionListener(new IndexerButtonListener(this, "zoomIn"));
+		panel.add(zoomInButton);
+		zoomOutButton = new JButton("Zoom Out");
+		zoomOutButton.addActionListener(new IndexerButtonListener(this, "zoomOut"));
+		panel.add(zoomOutButton);
+		invertButton = new JButton("Invert Image");
+		invertButton.addActionListener(new IndexerButtonListener(this, "invert"));
+		panel.add(invertButton);
+		highlightsButton = new JButton("Toggle Highlights");
+		highlightsButton.addActionListener(new IndexerButtonListener(this, "toggle"));
+		panel.add(highlightsButton);
+		saveButton = new JButton("Save");
+		saveButton.addActionListener(new IndexerButtonListener(this, "save"));
+		panel.add(saveButton);
+		submitButton = new JButton("Submit");
+		submitButton.addActionListener(new IndexerButtonListener(this, "submit"));
+		panel.add(submitButton);
+		
 		zoomInButton.setEnabled(turnOn);
 		zoomOutButton.setEnabled(turnOn);
 		invertButton.setEnabled(turnOn);
@@ -249,6 +251,13 @@ public class IndexerFrame extends JFrame {
 		saveButton.setEnabled(turnOn);
 		submitButton.setEnabled(turnOn);
 		downloadBatch.setEnabled(!turnOn);
+		
+		GridBagConstraints gbc_actions = new GridBagConstraints();
+		gbc_actions.insets = new Insets(3, 0, 2, 0);
+		gbc_actions.anchor = GridBagConstraints.WEST;
+		gbc_actions.gridx = 0;
+		gbc_actions.gridy = 0;
+		this.getContentPane().add(panel, gbc_actions);
 	}
 	
 	public void submitBatch() {

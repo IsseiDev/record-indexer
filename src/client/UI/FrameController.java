@@ -154,7 +154,7 @@ public class FrameController {
 			cc.Submit_Batch(batchParams);
 			
 			indexerFrame.setStateInfo(new BatchState(5, 5));
-			indexerFrame.toggleButtons(false);
+			indexerFrame.createButtonPanel(false);
 			indexerFrame.revalidate();
 			indexerFrame.repaint();
 

@@ -26,6 +26,7 @@ public class DownloadFrameListener implements ActionListener{
 		else if(type == "download")
 		{
 			frame.downloadBatch();
+			frame.dispose();
 		}
 		else if(type == "cancel")
 		{

@@ -196,6 +196,11 @@ public class ServerFacade {
 			}
 			else
 			{
+				System.out.println("Submit Batch Failed. ");
+				System.out.println("Does the user own this batch? : " + (u.getCurrent_batch() == params.getBatchID()) + " User Batch: " + u.getCurrent_batch() + " Submit Batch: " + params.getBatchID());
+				System.out.println("Does the batch and project exist? : " + "Batch: " + (b != null) + " Project: " + (p != null));
+				System.out.println("Are there the right number of values? : " + (requiredNumOfValues == params.getNumValues()) + "Required: " + requiredNumOfValues + " Given: " + params.getNumValues());				
+	
 				db.endTransaction();
 				return submitted;
 			}

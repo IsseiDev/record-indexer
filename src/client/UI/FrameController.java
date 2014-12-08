@@ -25,26 +25,28 @@ import shared.communication.GetSampleImage_Params;
 import shared.communication.GetSampleImage_Result;
 import shared.communication.Search_Params;
 import shared.communication.Search_Result;
+import shared.communication.SubmitBatch_Params;
 import shared.communication.ValidateUser_Params;
 import shared.communication.ValidateUser_Result;
 import client.ClientException;
 import client.Client_Communicator;
 import client.indexer.IndexerFrame;
+import client.indexer.TableModel;
 import client.login.InvalidFrame;
 import client.login.LoginFrame;
 import client.login.WelcomeFrame;
 
 public class FrameController {
 
-	Client_Communicator cc = new Client_Communicator("localhost", "8080");
+	Client_Communicator cc;
 	LoginFrame loginFrame = null;
 	WelcomeFrame welcome;
 	InvalidFrame invalidFrame;
 	IndexerFrame indexerFrame = null;
 	String username = "test1";
 	String password = "test1";
-	String hostname = "localhost";
-	String port = "8080";
+	String hostname;
+	String port;
 	GetProjects_Result proResult;
 	BatchState stateInfo;
 	XStream xStream;
@@ -52,12 +54,10 @@ public class FrameController {
 	
 	public void runLogin(String hostname, String port)
 	{
-		if(hostname != "")
-		{
-			this.hostname = hostname;
-		}
+		this.hostname = hostname;
 		this.port = port;
-		
+		cc = new Client_Communicator(hostname, port);
+		System.out.println("running on " + hostname + " : " + port);
 		//TO DO - This needs to be changed based on whether or not that person has information already
 		stateInfo = new BatchState(5, 5);
 		
@@ -72,9 +72,10 @@ public class FrameController {
 		loginFrame.dispose();
 	}
 	
-	public void runIndexer()
+	public void runIndexer(boolean hasBatchState)
 	{
 		loginFrame.setVisible(false);
+		indexerFrame.setUserDownloaded(hasBatchState);
 		indexerFrame.setVisible(true);
 	}
 	
@@ -124,13 +125,14 @@ public class FrameController {
 				String indexedMessage = "You have indexed " + result.getNum_records() + " records.";
 				welcome = new WelcomeFrame(this, welcomeMessage, indexedMessage);
 				welcome.setVisible(true);
-								
-				if(result.getCurrent_batch() != -1)
+						
+				boolean hasBatchState = (result.getCurrent_batch() != -1);
+				if(hasBatchState)
 				{
 					loadUser();
 				}
 				
-				runIndexer();
+				runIndexer(hasBatchState);
 			}
 			else
 			{
@@ -138,8 +140,26 @@ public class FrameController {
 				invalidFrame.setVisible(true);
 			}
 		} catch (ClientException e) {
+			System.out.println("Exception: " + e);
 			System.out.println("Could not connect with the server.\n");
 
+		}
+	}
+	
+	public void submitBatch()
+	{		
+		try {
+			SubmitBatch_Params batchParams = new SubmitBatch_Params(username, password, stateInfo.getBatchID(), "a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d");
+
+			cc.Submit_Batch(batchParams);
+			
+			indexerFrame.setStateInfo(new BatchState(5, 5));
+			indexerFrame.toggleButtons(false);
+			indexerFrame.revalidate();
+			indexerFrame.repaint();
+
+		} catch (ClientException e) {
+			System.out.println("Could not connect with the server.\n" + e);
 		}
 	}
 	
@@ -225,11 +245,16 @@ public class FrameController {
 		
 		if(batchResult != null)
 		{
+			stateInfo = new BatchState(batchResult.getNum_records(), batchResult.getNum_fields());
 			stateInfo.setBatchID(batchResult.getBatch_id());
 			stateInfo.loadImage(batchResult.getImage_url(hostname, port));
 			stateInfo.setFirstycoord(batchResult.getFirst_y_coord());
 			stateInfo.setRecordHeight(batchResult.getRecord_height());
 			stateInfo.setFields(batchResult.getFields());
+			stateInfo.setTableModel(new TableModel(stateInfo));
+			indexerFrame.setStateInfo(stateInfo);
+			indexerFrame.createTable();
+			indexerFrame.updateImage();
 			
 		}
 		//TODO Get All Fields and All Records for this batch
@@ -256,20 +281,29 @@ public class FrameController {
 	
 	public void saveUser()
 	{
+		System.out.println("Saving User.");
 		xStream = new XStream(new DomDriver()); 
 
 		try {
+			System.out.println("Trying.");
 			outFile = new BufferedOutputStream(new FileOutputStream( username + ".xml"));
+			System.out.println("Putting to XML.");
 			xStream.toXML(stateInfo, outFile); // This writes your batchstate to the outputFile;
+			System.out.println("Saving OUTFILE.");
 			outFile.close(); //close the writer
+			System.out.println("Closing.");
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("The exception: " + e);
+
 		} //Makes a xml file with the person's username
 
 	}
 	
 	public void loadUser()
 	{
+		xStream = new XStream(new DomDriver()); 
+		
 		try {
 			InputStream	inFile = new BufferedInputStream(new FileInputStream(username + ".xml")); //find the file with the given username
 			stateInfo = (BatchState) xStream.fromXML(inFile); //Read that batchstate back in to the exact form it was before

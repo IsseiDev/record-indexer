@@ -26,21 +26,21 @@ public class ImagePanel extends JPanel{
 
 		this.add(component, BorderLayout.CENTER);
 		
-		stateInfo.addListener(new BatchStateListener(){
+		//stateInfo.addListener(new BatchStateListener(){
 
-			@Override
-			public void valueChanged(Cell cell, String newValue) {
+		//	@Override
+		//	public void valueChanged(Cell cell, String newValue) {
 				// TODO Auto-generated method stub
 				
-			}
+		//	}
 
-			@Override
-			public void selectedCellChanged(Cell newSelectedCell) {
-				// TODO Auto-generated method stub
-				
-			}
+		//	@Override
+		//	public void selectedCellChanged(Cell newSelectedCell) {
+		//		// TODO Auto-generated method stub
+		//		
+		//	}
 			
-		});
+		//});
 	}
 
 	public DrawingComponent getDrawComponent() {

@@ -45,7 +45,7 @@ public class IndexerButtonListener implements ActionListener{
 		}
 		else if(type == "submit")
 		{
-			
+			frame.submitBatch();
 		}
 		else
 		{

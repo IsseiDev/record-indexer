@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import shared.model.Field;
 import shared.model.Record;
 import client.indexer.Cell;
+import client.indexer.TableModel;
 import client.listeners.BatchStateListener;
 
 public class BatchState {
@@ -20,7 +21,7 @@ public class BatchState {
 		
 		int recordCount = 6;
 		int fieldCount = 6;
-		int batchID;
+		int batchID = 2;
 		int firstycoord;
 		int recordHeight;
 		private String[][] values;
@@ -28,6 +29,7 @@ public class BatchState {
 		private List<BatchStateListener> listeners;
 		private static BufferedImage NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
 		private BufferedImage image = NULL_IMAGE;
+		private TableModel tableModel = null;
 		
 		public BatchState(int recordCount, int fieldCount) {
 			
@@ -37,6 +39,9 @@ public class BatchState {
 			selectedCell = null;
 			listeners = new ArrayList<BatchStateListener>();
 			
+		}
+		
+		public BatchState() {
 		}
 		
 		public void addListener(BatchStateListener l) {
@@ -169,6 +174,14 @@ public class BatchState {
 
 		public void setRecordHeight(int recordHeight) {
 			this.recordHeight = recordHeight;
+		}
+
+		public TableModel getTableModel() {
+			return tableModel;
+		}
+
+		public void setTableModel(TableModel tableModel) {
+			this.tableModel = tableModel;
 		}
 
 		public void setDummyFields(){

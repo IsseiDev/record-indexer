@@ -1,0 +1,12 @@
+Dec 08, 2014 12:21:04 PM server.Server run
+INFO: Initializing Model
+Dec 08, 2014 12:21:05 PM server.Server run
+INFO: Initializing HTTP Server on port 39640
+Dec 08, 2014 12:21:05 PM server.Server run
+INFO: Starting HTTP Server.
+Dec 08, 2014 12:24:11 PM server.DownloadHandler handle
+FINE: database\Records\/images/1900_image0.png
+Dec 08, 2014 12:24:15 PM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 08, 2014 12:24:17 PM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png

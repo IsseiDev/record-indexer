@@ -52,9 +52,14 @@ public class IndexerFrame extends JFrame {
 	
 	FrameController controller;
 	BatchState stateInfo;
+	TableModel tableModel;
+	JTable table;
+	boolean userDownloaded = false;
+	JSplitPane bottomSplitter;
+	JSplitPane mainSplitter;
 	
 	public IndexerFrame(FrameController controller, BatchState stateInfo) {
-		
+		this.stateInfo = stateInfo;
 		this.controller = controller;
 		// Set the window's title
 		this.setTitle("Indexer");
@@ -69,7 +74,7 @@ public class IndexerFrame extends JFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		this.getContentPane().setLayout(gridBagLayout);
 		
-		JSplitPane mainSplitter = new JSplitPane();
+		mainSplitter = new JSplitPane();
 		mainSplitter.setContinuousLayout(true);
 		mainSplitter.setResizeWeight(0.5);
 		mainSplitter.setDividerLocation(400);
@@ -81,7 +86,7 @@ public class IndexerFrame extends JFrame {
 		gbc_mainSplitter.gridy = 1;
 		this.getContentPane().add(mainSplitter, gbc_mainSplitter);
 		
-		JSplitPane bottomSplitter = new JSplitPane();
+		bottomSplitter = new JSplitPane();
 		bottomSplitter.setContinuousLayout(true);
 		bottomSplitter.setResizeWeight(0.5);
 		mainSplitter.setRightComponent(bottomSplitter);
@@ -89,21 +94,17 @@ public class IndexerFrame extends JFrame {
 		//Initialize the Panels
 		image = new ImagePanel(stateInfo);		
 		
-		//Creating the table to pass in
-		TableModel tableModel = new TableModel(stateInfo);
-		JTable table = new JTable(tableModel);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setCellSelectionEnabled(true);
-		table.getTableHeader().setReorderingAllowed(false);
-		
-		TableColumnModel columnModel = table.getColumnModel();
-		for (int i = 0; i < tableModel.getColumnCount(); ++i) {
-			TableColumn column = columnModel.getColumn(i);
-			column.setPreferredWidth(100);
-		}	
+		if (userDownloaded == true)
+		{
+			createTable();
+		} 
+		else 
+		{
+			table = null;
+		}
 		
 		tableEntry = new TablePanel(table);
-		formEntry = new FormPanel();
+		formEntry = new FormPanel(stateInfo);
 		
 		bottomLeftPane = new JTabbedPane(JTabbedPane.TOP);
 		bottomRightPane = new JTabbedPane(JTabbedPane.TOP);
@@ -128,6 +129,11 @@ public class IndexerFrame extends JFrame {
 		downloadBatch.addActionListener(new MenuListener(this, "download"));
 		menu.add(downloadBatch);
 		
+		if(userDownloaded)
+		{
+			downloadBatch.setEnabled(false);
+		}
+		
 		logout = new JMenuItem("Logout");
 		logout.addActionListener(new MenuListener(this, "logout"));
 		menu.add(logout);
@@ -139,7 +145,7 @@ public class IndexerFrame extends JFrame {
 		menuBar.add(menu);
 		
 		this.setJMenuBar(menuBar);
-		
+				
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 10, 900, 40);
 		zoomInButton = new JButton("Zoom In");
@@ -160,6 +166,9 @@ public class IndexerFrame extends JFrame {
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(new IndexerButtonListener(this, "submit"));
 		panel.add(submitButton);
+		
+
+		toggleButtons(userDownloaded);
 		
 		GridBagConstraints gbc_actions = new GridBagConstraints();
 		gbc_actions.insets = new Insets(3, 0, 2, 0);
@@ -196,6 +205,56 @@ public class IndexerFrame extends JFrame {
 		download.setVisible(true);
 	}
 
+	public void createTable()
+	{
+		//Creating the table to pass in
+		this.tableModel = stateInfo.getTableModel();
+		table = new JTable(tableModel);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setCellSelectionEnabled(true);
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		TableColumnModel columnModel = table.getColumnModel();
+		for (int i = 0; i < tableModel.getColumnCount(); ++i) {
+			TableColumn column = columnModel.getColumn(i);
+			column.setPreferredWidth(100);
+		}	
+		
+		bottomLeftPane.removeAll();
+		tableEntry = new TablePanel(table);
+		formEntry = new FormPanel(stateInfo);
+		
+		bottomLeftPane.addTab("Table Entry", tableEntry);
+		bottomLeftPane.addTab("Form Entry", formEntry);
+
+		this.repaint();
+		this.validate();
+	}
+	
+	public void updateImage()
+	{
+		mainSplitter.setLeftComponent(new ImagePanel(stateInfo));
+		userDownloaded = true;
+		toggleButtons(userDownloaded);
+		this.validate();
+		this.repaint();
+	}
+	
+	public void toggleButtons(boolean turnOn)
+	{
+		zoomInButton.setEnabled(turnOn);
+		zoomOutButton.setEnabled(turnOn);
+		invertButton.setEnabled(turnOn);
+		highlightsButton.setEnabled(turnOn);
+		saveButton.setEnabled(turnOn);
+		submitButton.setEnabled(turnOn);
+		downloadBatch.setEnabled(!turnOn);
+	}
+	
+	public void submitBatch() {
+		controller.submitBatch();
+	}
+	
 	public JMenu getMenu() {
 		return menu;
 	}
@@ -330,6 +389,22 @@ public class IndexerFrame extends JFrame {
 
 	public void setController(FrameController controller) {
 		this.controller = controller;
+	}
+
+	public boolean isUserDownloaded() {
+		return userDownloaded;
+	}
+
+	public void setUserDownloaded(boolean userDownloaded) {
+		this.userDownloaded = userDownloaded;
+	}
+
+	public BatchState getStateInfo() {
+		return stateInfo;
+	}
+
+	public void setStateInfo(BatchState stateInfo) {
+		this.stateInfo = stateInfo;
 	}
 	
 }

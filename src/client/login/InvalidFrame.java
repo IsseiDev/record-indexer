@@ -28,6 +28,7 @@ public class InvalidFrame extends JDialog {
 		this.setTitle("Invalid");
 		this.setModal(true);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
 		this.setModalityType(ModalityType.APPLICATION_MODAL);
 		
 		// Specify what should happen when the user clicks the window's close icon

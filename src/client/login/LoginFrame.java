@@ -33,6 +33,7 @@ public class LoginFrame extends JFrame {
 		// Set the window's title
 		this.setTitle("Login");
 		
+		this.setResizable(false);
 		// Specify what should happen when the user clicks the window's close icon
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 
@@ -73,7 +74,7 @@ public class LoginFrame extends JFrame {
 		
 		this.add(buttonPanel, BorderLayout.PAGE_END);
 		// Set the location of the window on the desktop
-		this.setLocation(100, 100);
+		this.setLocation(500, 400);
 
 		// Size the window according to the preferred sizes and layout of its subcomponents
 		this.setSize(375, 150);

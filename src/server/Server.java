@@ -58,7 +58,7 @@ public class Server {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 			return;
 		}		
-		logger.info("Initializing HTTP Server");
+		logger.info("Initializing HTTP Server on port " + server_port_number);
 		
 		try {
 			server = HttpServer.create(new InetSocketAddress(server_port_number), 
@@ -82,8 +82,7 @@ public class Server {
 
 		//The other contexts as well
 		
-		logger.info("Starting HTTP Server");
-		
+		logger.info("Starting HTTP Server.");
 		server.start();
 		
 	}

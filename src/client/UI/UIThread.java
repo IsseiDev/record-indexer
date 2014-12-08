@@ -8,9 +8,10 @@ public class UIThread {
 
 	public static void main(final String[] args) {
 
+		final FrameController controller = new FrameController();
+		
 		if(args.length == 2)
 		{
-			final FrameController controller = new FrameController();
 	
 			/*
 				In Swing, all user interface operations must occur on the UI thread.
@@ -23,14 +24,22 @@ public class UIThread {
 			 */
 			EventQueue.invokeLater(new Runnable() {		
 				public void run() {
-					//controller.runLogin(args[0], args[1]);
-					controller.testIndexer();
+					if(args[0] == "")
+					{
+						args[0] = "localhost";
+					}
+					if(args[1] == "")
+					{
+						args[1] = "8080";
+					}
+					controller.runLogin(args[0], args[1]);
+					//controller.testIndexer();
 				}
 			});
 		}
 		else
 		{
-			System.out.println("Please include the Port and Hostname as the arguments.");
+			controller.runLogin("localhost", "8080");
 		}
 	}
 }

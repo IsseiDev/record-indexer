@@ -27,6 +27,7 @@ public class WelcomeFrame extends JDialog {
 		// Set the window's title
 		this.setTitle("Welcome");
 		this.setModal(true);
+		this.setResizable(false);
 		this.setAlwaysOnTop(true);
 		this.setModalityType(ModalityType.APPLICATION_MODAL);
 		

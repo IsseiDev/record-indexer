@@ -4,7 +4,6 @@ package client.UI;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -154,6 +153,8 @@ public class FrameController {
 			cc.Submit_Batch(batchParams);
 			
 			indexerFrame.setStateInfo(new BatchState(5, 5));
+			indexerFrame.createTable();
+			indexerFrame.updateImage();
 			indexerFrame.createButtonPanel(false);
 			indexerFrame.revalidate();
 			indexerFrame.repaint();
@@ -308,6 +309,12 @@ public class FrameController {
 			InputStream	inFile = new BufferedInputStream(new FileInputStream(username + ".xml")); //find the file with the given username
 			stateInfo = (BatchState) xStream.fromXML(inFile); //Read that batchstate back in to the exact form it was before
 			inFile.close();
+			System.out.println("\n\n\nLoading the image scale: " + stateInfo.getScale());
+			stateInfo.setTableModel(new TableModel(stateInfo));
+			indexerFrame.setStateInfo(stateInfo);
+			stateInfo.loadImage(stateInfo.imageLocation);
+			indexerFrame.createTable();
+			indexerFrame.updateImage();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

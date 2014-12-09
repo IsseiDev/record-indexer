@@ -25,32 +25,32 @@ public class DrawingComponent extends JComponent {
 	private int w_originY;
 	private double scale;
 	
-	private boolean dragging;
-	private int w_dragStartX;
-	private int w_dragStartY;
-	private int w_dragStartOriginX;
-	private int w_dragStartOriginY;
+	private boolean dragging = false;
+	private int w_dragStartX = 0;
+	private int w_dragStartY = 0;
+	private int w_dragStartOriginX = 0;
+	private int w_dragStartOriginY = 0;
+	private boolean inverted;
 
 	private ArrayList<DrawingShape> shapes;
 	private Font font;
 	private BasicStroke stroke;
 	
+	BatchState stateInfo;
 	DrawingImage picture;
 	
 	BatchState model;
 	BufferedImage bufferedImage;
 	
-	public DrawingComponent(BufferedImage bufferedImage) throws MalformedURLException {
-		w_originX = 0;
-		w_originY = 0;
-		scale = 1.0;
-		
-		initDrag();
-		this.bufferedImage = bufferedImage;
+	public DrawingComponent(BatchState stateInfo) throws MalformedURLException {
+		this.stateInfo = stateInfo;
+		scale = stateInfo.getScale();
+		inverted = stateInfo.isImageInverted();
+				
+		this.bufferedImage = stateInfo.getImage();
 		
 		shapes = new ArrayList<DrawingShape>();
 		
-		font = new Font("SansSerif", Font.PLAIN, 72);
 		stroke = new BasicStroke(5);
 		
 		this.setPreferredSize(new Dimension(900, 400));
@@ -62,16 +62,27 @@ public class DrawingComponent extends JComponent {
 		this.addMouseMotionListener(mouseAdapter);
 		this.addComponentListener(componentAdapter);
 				
-		w_originX = bufferedImage.getWidth(null)/2;
-		w_originY = bufferedImage.getHeight(null)/2;
+		w_originX = stateInfo.getXOrigin();
+		w_originY = stateInfo.getYOrigin();
+		System.out.println("I'm gonna add the shape!");
+		System.out.println("Scale: " + scale + " X-Origin: " + w_originX + " Y-Origin: " + w_originY + " Inverted?: " + inverted);
 		picture = new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale));
-		shapes.add(picture);		
+		shapes.add(picture);	
+		
+
+		if(inverted)
+		{
+			System.out.println("Looks like i'm inverted.");
+			stateInfo.setImageInverted(false);
+			invertImage();
+		}
 	}
 	
 	public void invertImage(){
 		bufferedImage = new RescaleOp(-1.0f, 255.0f, null).filter(getBufferedImage(), null);
 		shapes.clear();
 		shapes.add(new DrawingImage(bufferedImage, picture.getBounds(null)));		
+		stateInfo.setImageInverted(!stateInfo.isImageInverted());
 		this.repaint();
 	}
 	
@@ -81,6 +92,8 @@ public class DrawingComponent extends JComponent {
 		w_dragStartY = 0;
 		w_dragStartOriginX = 0;
 		w_dragStartOriginY = 0;
+		
+		setOrigin(w_originX, w_originY);
 	}
 	
 	private void updateTextShapes() {
@@ -102,6 +115,8 @@ public class DrawingComponent extends JComponent {
 		if(newScale >= 0.41 && newScale <= 4.1)
 		{
 			scale = newScale;
+			System.out.println("Setting the scale: " + newScale);
+			stateInfo.setScale(scale);
 			this.repaint();
 		}
 	}
@@ -109,7 +124,9 @@ public class DrawingComponent extends JComponent {
 	public void setOrigin(int w_newOriginX, int w_newOriginY) {
 		w_originX = w_newOriginX;
 		w_originY = w_newOriginY;
-		System.out.println("New origin X: " + w_originX + "    New origin Y: " + w_originY);
+		//System.out.println("New origin X: " + w_originX + "    New origin Y: " + w_originY);
+		stateInfo.setXOrigin(w_originX);
+		stateInfo.setYOrigin(w_originY);
 		this.repaint();
 	}
 
@@ -186,6 +203,7 @@ public class DrawingComponent extends JComponent {
 				w_dragStartY = w_Y;		
 				w_dragStartOriginX = w_originX;
 				w_dragStartOriginY = w_originY;
+				
 			}
 		}
 
@@ -217,6 +235,8 @@ public class DrawingComponent extends JComponent {
 				
 				w_originX = w_dragStartOriginX - w_deltaX;
 				w_originY = w_dragStartOriginY - w_deltaY;
+				
+				setOrigin(w_originX, w_originY);
 				
 				repaint();
 			}
@@ -545,7 +565,3 @@ public class DrawingComponent extends JComponent {
 	}
 	
 }
-
-
-
-

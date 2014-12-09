@@ -188,12 +188,14 @@ public class IndexerFrame extends JFrame {
 		table.setCellSelectionEnabled(true);
 		table.getTableHeader().setReorderingAllowed(false);
 		
-		TableColumnModel columnModel = table.getColumnModel();
-		for (int i = 0; i < tableModel.getColumnCount(); ++i) {
-			TableColumn column = columnModel.getColumn(i);
-			column.setPreferredWidth(100);
-		}	
-		
+		if(tableModel != null)
+		{
+			TableColumnModel columnModel = table.getColumnModel();
+			for (int i = 0; i < tableModel.getColumnCount(); ++i) {
+				TableColumn column = columnModel.getColumn(i);
+				column.setPreferredWidth(100);
+			}	
+		}
 		bottomLeftPane.removeAll();
 		tableEntry = new TablePanel(table);
 		formEntry = new FormPanel(stateInfo);
@@ -209,6 +211,8 @@ public class IndexerFrame extends JFrame {
 	{
 		image = new ImagePanel(stateInfo);
 		mainSplitter.setLeftComponent(image);
+		mainSplitter.setResizeWeight(0.5);
+		mainSplitter.setDividerLocation(400);
 		userDownloaded = true;
 		createButtonPanel(userDownloaded);
 		this.validate();

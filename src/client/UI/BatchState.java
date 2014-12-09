@@ -24,15 +24,25 @@ public class BatchState {
 		int batchID = 2;
 		int firstycoord;
 		int recordHeight;
+		double imageScale = 1.0;
+		int imagexOrigin = 0;
+		int imageyOrigin = 0;
+		boolean imageInverted = false;
 		private String[][] values;
 		private Cell selectedCell;
-		private List<BatchStateListener> listeners;
-		private static BufferedImage NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
-		private BufferedImage image = NULL_IMAGE;
-		private TableModel tableModel = null;
+		transient private List<BatchStateListener> listeners;
+		String imageLocation;
+		transient private static BufferedImage NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+		transient private BufferedImage image;
+		transient private TableModel tableModel = null;
 		
 		public BatchState(int recordCount, int fieldCount) {
-			
+			this.image = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
+			if(imagexOrigin == 0 && imageyOrigin == 0)
+			{
+				imagexOrigin = image.getWidth(null)/2;
+				imageyOrigin = image.getHeight(null)/2;
+			}
 			this.recordCount = recordCount;
 			this.fieldCount = fieldCount;
 			values = new String[recordCount][fieldCount];
@@ -76,7 +86,8 @@ public class BatchState {
 		
 		public void loadImage(String imageFile) {
 			try {
-				image = ImageIO.read(new URL(imageFile));
+				this.imageLocation = imageFile;
+				image = ImageIO.read(new URL(imageLocation));
 			}
 			catch (IOException e) {
 				image = NULL_IMAGE;
@@ -182,6 +193,46 @@ public class BatchState {
 
 		public void setTableModel(TableModel tableModel) {
 			this.tableModel = tableModel;
+		}
+
+		public double getScale() {
+			return imageScale;
+		}
+
+		public void setScale(double imageScale) {
+			this.imageScale = imageScale;
+		}
+
+		public int getXOrigin() {
+			return imagexOrigin;
+		}
+
+		public void setXOrigin(int imagexOrigin) {
+			this.imagexOrigin = imagexOrigin;
+		}
+
+		public int getYOrigin() {
+			return imageyOrigin;
+		}
+
+		public void setYOrigin(int imageyOrigin) {
+			this.imageyOrigin = imageyOrigin;
+		}
+
+		public boolean isImageInverted() {
+			return imageInverted;
+		}
+
+		public void setImageInverted(boolean imageInverted) {
+			this.imageInverted = imageInverted;
+		}
+
+		public String getImageLocation() {
+			return imageLocation;
+		}
+
+		public void setImageLocation(String imageLocation) {
+			this.imageLocation = imageLocation;
 		}
 
 		public void setDummyFields(){

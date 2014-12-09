@@ -40,7 +40,6 @@ public class IndexerButtonListener implements ActionListener{
 		}
 		else if(type == "invert")
 		{
-			System.out.println("Trying to invert");
 			drawComponent.invertImage();
 		}
 		else if(type == "toggle")

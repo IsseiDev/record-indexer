@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -16,7 +17,8 @@ public class SwingSandbox {
 
         final BufferedImage image = ImageIO.read(new File("C:\\Users\\dnorth2\\workspace\\record-indexer\\test\\lectures\\spongebob.jpg"));
 
-        JPanel pane = new JPanel() {
+        @SuppressWarnings("serial")
+		JPanel pane = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);

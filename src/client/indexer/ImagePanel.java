@@ -18,7 +18,7 @@ public class ImagePanel extends JPanel{
 		this.setBackground(Color.GRAY);
 		
 		try {
-			component = new DrawingComponent(stateInfo.getImage());
+			component = new DrawingComponent(stateInfo);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

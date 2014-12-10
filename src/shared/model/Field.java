@@ -69,6 +69,10 @@ int project_id;
 	public String getHelphtml() {
 		return helphtml;
 	}
+	
+	public String getHelphtml(String hostname, String port) {
+		return "http://" + hostname + ":" + port + "/" + helphtml;
+	}
 
 	/**
 	 * @param helphtml the helphtml to set

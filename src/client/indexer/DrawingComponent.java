@@ -64,8 +64,10 @@ public class DrawingComponent extends JComponent {
 				
 		w_originX = stateInfo.getXOrigin();
 		w_originY = stateInfo.getYOrigin();
-		System.out.println("I'm gonna add the shape!");
+		w_originX = getWidth()/2;
+		w_originY = getHeight()/2;
 		System.out.println("Scale: " + scale + " X-Origin: " + w_originX + " Y-Origin: " + w_originY + " Inverted?: " + inverted);
+		System.out.println("Image Width: " + bufferedImage.getWidth() + " Image Height: " + bufferedImage.getHeight());
 		picture = new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null)/2 * scale, bufferedImage.getHeight(null)/2 * scale));
 		shapes.add(picture);	
 		
@@ -115,7 +117,6 @@ public class DrawingComponent extends JComponent {
 		if(newScale >= 0.41 && newScale <= 4.1)
 		{
 			scale = newScale;
-			System.out.println("Setting the scale: " + newScale);
 			stateInfo.setScale(scale);
 			this.repaint();
 		}
@@ -235,11 +236,12 @@ public class DrawingComponent extends JComponent {
 				
 				w_originX = w_dragStartOriginX - w_deltaX;
 				w_originY = w_dragStartOriginY - w_deltaY;
-				
-				setOrigin(w_originX, w_originY);
-				
+								
 				repaint();
 			}
+			
+			setOrigin(w_originX, w_originY);
+
 		}
 
 		@Override

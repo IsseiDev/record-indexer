@@ -1,6 +1,16 @@
 <client.UI.BatchState>
   <fields>
     <shared.model.Field>
+      <id>0</id>
+      <title>Record Number</title>
+      <helphtml></helphtml>
+      <knowndata></knowndata>
+      <xcoord>-1</xcoord>
+      <width>-1</width>
+      <position>-1</position>
+      <project__id>-1</project__id>
+    </shared.model.Field>
+    <shared.model.Field>
       <id>1</id>
       <title>Last Name</title>
       <helphtml>fieldhelp/last_name.html</helphtml>
@@ -41,63 +51,75 @@
     </shared.model.Field>
   </fields>
   <recordCount>8</recordCount>
-  <fieldCount>4</fieldCount>
-  <batchID>4</batchID>
+  <fieldCount>5</fieldCount>
+  <batchID>3</batchID>
   <firstycoord>199</firstycoord>
   <recordHeight>60</recordHeight>
-  <imageScale>0.5999999999999996</imageScale>
-  <imagexOrigin>673</imagexOrigin>
-  <imageyOrigin>482</imageyOrigin>
-  <imageInverted>true</imageInverted>
+  <imageScale>1.0</imageScale>
+  <imagexOrigin>515</imagexOrigin>
+  <imageyOrigin>350</imageyOrigin>
+  <imageInverted>false</imageInverted>
   <values>
     <string-array>
+      <string>1</string>
+      <null/>
+      <string>Hanna</string>
+      <string>Female</string>
+      <string>22</string>
+    </string-array>
+    <string-array>
+      <string>2</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>3</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>4</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>5</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>6</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>7</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
-      <null/>
-      <null/>
-      <null/>
-      <null/>
-    </string-array>
-    <string-array>
+      <string>8</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
   </values>
-  <imageLocation>http://localhost:39640/images/1890_image3.png</imageLocation>
+  <selectedCell>
+    <row>1</row>
+    <col>3</col>
+  </selectedCell>
+  <imageLocation>http://localhost:39640/images/1890_image2.png</imageLocation>
 </client.UI.BatchState>

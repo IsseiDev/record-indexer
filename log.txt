@@ -244,3 +244,109 @@ Dec 08, 2014 10:29:42 PM server.DownloadHandler handle
 FINE: database\Records\/images/1890_image3.png
 Dec 08, 2014 10:29:54 PM server.DownloadHandler handle
 FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:01 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:12 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:21 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:30 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:43 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:50:57 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:51:20 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:51:32 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:52:02 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:52:11 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:52:21 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:52:47 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:52:59 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:53:10 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:54:31 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:54:50 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:55:07 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image3.png
+Dec 09, 2014 9:55:49 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:56:07 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:56:17 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:56:35 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:58:49 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:59:02 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:59:12 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:59:24 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 9:59:36 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:00:02 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:00:34 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:00:45 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:00:59 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:01:16 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:01:43 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:03:33 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:03:49 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:04:05 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:04:19 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:04:28 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:04:44 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:08:42 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:23:28 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:23:49 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:27:24 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:29:32 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:31:27 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:31:45 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image2.png
+Dec 09, 2014 10:35:36 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:37:43 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:38:10 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:39:35 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:42:52 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:43:05 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:43:18 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 10:48:15 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png

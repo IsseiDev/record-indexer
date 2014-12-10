@@ -4,6 +4,7 @@ package client.indexer;
 import javax.swing.table.*;
 
 import client.UI.BatchState;
+import client.listeners.BatchStateListener;
 
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
@@ -12,6 +13,7 @@ public class TableModel extends AbstractTableModel {
 	
 	public TableModel(BatchState stateInfo) {
 		this.stateInfo = stateInfo;
+		
 	}
 
 	@Override
@@ -41,14 +43,11 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int row, int column) {
-
 		return stateInfo.getValue(new Cell(row, column));	
-
 	}
 
 	@Override
 	public void setValueAt(Object value, int row, int column) {
-		
 		stateInfo.setValue(new Cell(row, column), (String)value);	
 	}
 

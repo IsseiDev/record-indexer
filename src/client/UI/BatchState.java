@@ -38,20 +38,21 @@ public class BatchState {
 		
 		public BatchState(int recordCount, int fieldCount) {
 			this.image = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
-			if(imagexOrigin == 0 && imageyOrigin == 0)
-			{
-				imagexOrigin = image.getWidth(null)/2;
-				imageyOrigin = image.getHeight(null)/2;
-			}
+
 			this.recordCount = recordCount;
 			this.fieldCount = fieldCount;
 			values = new String[recordCount][fieldCount];
-			selectedCell = null;
+			selectedCell = new Cell(1, 1);
 			listeners = new ArrayList<BatchStateListener>();
-			
+			setRecordNumbers();
 		}
 		
-		public BatchState() {
+		public void setRecordNumbers()
+		{
+			for(int i = 0; i < recordCount; i++)
+			{
+				setValue(new Cell(i, 0), Integer.toString(i+1));
+			}
 		}
 		
 		public void addListener(BatchStateListener l) {
@@ -116,6 +117,7 @@ public class BatchState {
 
 		public void setFields(List<Field> fields) {
 			this.fields = fields;
+			fields.add(0, new Field("Record Number", "", "", -1, -1, -1, -1));
 		}
 
 		public List<Record> getRecords() {
@@ -137,6 +139,31 @@ public class BatchState {
 
 		public void setValues(String[][] values) {
 			this.values = values;
+		}
+		
+		public String valuesToString()
+		{
+			StringBuilder sb = new StringBuilder();
+
+			for(int i=0; i < recordCount; i++)
+			{
+				for(int j=1; j < fieldCount; j++)
+				{
+					sb.append(values[i][j]);
+					if(j != fieldCount-1)
+					{
+						sb.append(",");
+						
+					}
+				}
+				if(i != recordCount-1)
+				{
+					sb.append(";");
+				}
+			}
+			
+			System.out.println("Here is what i am returning: " + sb.toString());
+			return sb.toString();
 		}
 
 		public List<BatchStateListener> getListeners() {

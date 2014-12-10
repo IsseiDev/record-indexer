@@ -148,7 +148,7 @@ public class FrameController {
 	public void submitBatch()
 	{		
 		try {
-			SubmitBatch_Params batchParams = new SubmitBatch_Params(username, password, stateInfo.getBatchID(), "a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d;a,d,f,d");
+			SubmitBatch_Params batchParams = new SubmitBatch_Params(username, password, stateInfo.getBatchID(), stateInfo.valuesToString());
 
 			cc.Submit_Batch(batchParams);
 			
@@ -246,7 +246,7 @@ public class FrameController {
 		
 		if(batchResult != null)
 		{
-			stateInfo = new BatchState(batchResult.getNum_records(), batchResult.getNum_fields());
+			stateInfo = new BatchState(batchResult.getNum_records(), batchResult.getNum_fields() + 1);
 			stateInfo.setBatchID(batchResult.getBatch_id());
 			stateInfo.loadImage(batchResult.getImage_url(hostname, port));
 			stateInfo.setFirstycoord(batchResult.getFirst_y_coord());
@@ -254,6 +254,7 @@ public class FrameController {
 			stateInfo.setFields(batchResult.getFields());
 			stateInfo.setTableModel(new TableModel(stateInfo));
 			indexerFrame.setStateInfo(stateInfo);
+			indexerFrame.createListeners();
 			indexerFrame.createTable();
 			indexerFrame.updateImage();
 			
@@ -312,6 +313,7 @@ public class FrameController {
 			System.out.println("\n\n\nLoading the image scale: " + stateInfo.getScale());
 			stateInfo.setTableModel(new TableModel(stateInfo));
 			indexerFrame.setStateInfo(stateInfo);
+			indexerFrame.createListeners();
 			stateInfo.loadImage(stateInfo.imageLocation);
 			indexerFrame.createTable();
 			indexerFrame.updateImage();

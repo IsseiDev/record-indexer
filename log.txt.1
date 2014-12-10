@@ -1,0 +1,71 @@
+Dec 09, 2014 10:50:23 AM server.Server run
+INFO: Initializing Model
+Dec 09, 2014 10:50:23 AM server.Server run
+INFO: Initializing HTTP Server on port 39640
+Dec 09, 2014 10:50:23 AM server.Server run
+INFO: Starting HTTP Server.
+Dec 09, 2014 10:50:43 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:50:48 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:51:14 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:51:30 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:52:01 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:52:12 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:52:23 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 10:54:32 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:00:29 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:00:40 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:15:39 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:17:04 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:18:41 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:24:37 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:28:44 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:29:48 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:31:28 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image1.png
+Dec 09, 2014 11:33:19 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:34:34 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:40:10 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:41:11 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:41:48 AM server.DownloadHandler handle
+FINE: database\Records\/images/1890_image0.png
+Dec 09, 2014 11:42:22 AM server.SubmitBatchHandler handle
+SEVERE: Could not update Value
+server.ServerException: Could not update Value
+	at server.facade.ServerFacade.submitBatch(ServerFacade.java:210)
+	at server.SubmitBatchHandler.handle(SubmitBatchHandler.java:29)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Unknown Source)
+	at sun.net.httpserver.AuthFilter.doFilter(Unknown Source)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Unknown Source)
+	at sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(Unknown Source)
+	at com.sun.net.httpserver.Filter$Chain.doFilter(Unknown Source)
+	at sun.net.httpserver.ServerImpl$Exchange.run(Unknown Source)
+	at sun.net.httpserver.ServerImpl$DefaultExecutor.execute(Unknown Source)
+	at sun.net.httpserver.ServerImpl$Dispatcher.handle(Unknown Source)
+	at sun.net.httpserver.ServerImpl$Dispatcher.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: server.database.DatabaseException: Could not update Value
+	at server.database.ValueDAO.update(ValueDAO.java:76)
+	at server.facade.ServerFacade.parseSubmit(ServerFacade.java:231)
+	at server.facade.ServerFacade.submitBatch(ServerFacade.java:183)
+	... 11 more
+

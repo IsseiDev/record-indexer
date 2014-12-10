@@ -3,6 +3,7 @@ package client.indexer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +15,17 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import client.UI.BatchState;
 import client.UI.FrameController;
+import client.listeners.BatchStateListener;
 import client.listeners.IndexerButtonListener;
 import client.listeners.MenuListener;
 
@@ -36,7 +43,7 @@ public class IndexerFrame extends JFrame {
 	JTabbedPane bottomRightPane;
 	TablePanel tableEntry;
 	JPanel formEntry;
-	JPanel fieldHelp;
+	HelpPane fieldHelp;
 	JPanel imageNav;
 	
 	//All of the buttons
@@ -92,14 +99,8 @@ public class IndexerFrame extends JFrame {
 		//Initialize the Panels
 		image = new ImagePanel(stateInfo);		
 		
-		if (userDownloaded == true)
-		{
-			createTable();
-		} 
-		else 
-		{
-			table = null;
-		}
+
+		table = null;
 		
 		tableEntry = new TablePanel(table);
 		formEntry = new FormPanel(stateInfo);
@@ -114,8 +115,8 @@ public class IndexerFrame extends JFrame {
 		bottomLeftPane.addTab("Table Entry", tableEntry);
 		bottomLeftPane.addTab("Form Entry", formEntry);
 		
-		bottomRightPane.addTab("Image Navigation", imageNav);
 		bottomRightPane.addTab("Field Help", fieldHelp);
+		bottomRightPane.addTab("Image Navigation", imageNav);
 
 		mainSplitter.setLeftComponent(image);
 		
@@ -188,6 +189,18 @@ public class IndexerFrame extends JFrame {
 		table.setCellSelectionEnabled(true);
 		table.getTableHeader().setReorderingAllowed(false);
 		
+		ListSelectionModel cellSelectionModel = table.getSelectionModel();
+		
+		cellSelectionModel.addListSelectionListener(new ListSelectionListener(){
+
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				System.out.println("Selected Cell Row: " + table.getSelectedRow() + " Col: " + table.getSelectedColumn());
+				stateInfo.setSelectedCell(new Cell(table.getSelectedRow(), table.getSelectedColumn()));
+			}
+			
+			
+		});
 		if(tableModel != null)
 		{
 			TableColumnModel columnModel = table.getColumnModel();
@@ -195,13 +208,49 @@ public class IndexerFrame extends JFrame {
 				TableColumn column = columnModel.getColumn(i);
 				column.setPreferredWidth(100);
 			}	
+			
+			columnModel.addColumnModelListener(new TableColumnModelListener() {
+
+				@Override
+				public void columnAdded(TableColumnModelEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void columnMarginChanged(ChangeEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void columnMoved(TableColumnModelEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void columnRemoved(TableColumnModelEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void columnSelectionChanged(ListSelectionEvent arg0) {
+					stateInfo.setSelectedCell(new Cell(table.getSelectedRow(), table.getSelectedColumn()));
+				}
+			});
 		}
 		bottomLeftPane.removeAll();
 		tableEntry = new TablePanel(table);
 		formEntry = new FormPanel(stateInfo);
-		
+		fieldHelp = new HelpPane(stateInfo, controller.getHostname(), controller.getPort());
 		bottomLeftPane.addTab("Table Entry", tableEntry);
 		bottomLeftPane.addTab("Form Entry", formEntry);
+		
+		bottomRightPane.removeAll();
+		bottomRightPane.addTab("Field Help", fieldHelp);
+		bottomRightPane.addTab("Image Navigation", new JPanel());
 
 		this.repaint();
 		this.validate();
@@ -217,6 +266,12 @@ public class IndexerFrame extends JFrame {
 		createButtonPanel(userDownloaded);
 		this.validate();
 		this.repaint();
+	}
+	
+	public void createListeners()
+	{
+		System.out.println("Listeners set." );
+		stateInfo.setListeners(new ArrayList<BatchStateListener>());
 	}
 	
 	public void createButtonPanel(boolean turnOn)
@@ -332,11 +387,11 @@ public class IndexerFrame extends JFrame {
 		this.formEntry = formEntry;
 	}
 
-	public JPanel getFieldHelp() {
+	public HelpPane getFieldHelp() {
 		return fieldHelp;
 	}
 
-	public void setFieldHelp(JPanel fieldHelp) {
+	public void setFieldHelp(HelpPane fieldHelp) {
 		this.fieldHelp = fieldHelp;
 	}
 

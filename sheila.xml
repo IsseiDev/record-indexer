@@ -52,20 +52,20 @@
   </fields>
   <recordCount>8</recordCount>
   <fieldCount>5</fieldCount>
-  <batchID>3</batchID>
+  <batchID>2</batchID>
   <firstycoord>199</firstycoord>
   <recordHeight>60</recordHeight>
   <imageScale>1.0</imageScale>
-  <imagexOrigin>515</imagexOrigin>
-  <imageyOrigin>350</imageyOrigin>
+  <imagexOrigin>596</imagexOrigin>
+  <imageyOrigin>343</imageyOrigin>
   <imageInverted>false</imageInverted>
   <values>
     <string-array>
       <string>1</string>
       <null/>
-      <string>Hanna</string>
-      <string>Female</string>
-      <string>22</string>
+      <null/>
+      <null/>
+      <null/>
     </string-array>
     <string-array>
       <string>2</string>
@@ -119,7 +119,7 @@
   </values>
   <selectedCell>
     <row>1</row>
-    <col>3</col>
+    <col>1</col>
   </selectedCell>
-  <imageLocation>http://localhost:39640/images/1890_image2.png</imageLocation>
+  <imageLocation>http://localhost:8080/images/1890_image1.png</imageLocation>
 </client.UI.BatchState>

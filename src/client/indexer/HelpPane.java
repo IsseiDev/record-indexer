@@ -17,7 +17,7 @@ public class HelpPane extends JEditorPane {
 		this.setEditable(false);
 		
 		try {
-			if(stateInfo.getFieldCount() != 0)
+			if(stateInfo.getFields() != null)
 			{
 				HelpPane.this.setPage(stateInfo.getFields().get(stateInfo.getSelectedCell().getCol()).getHelphtml(hostname, port));
 				

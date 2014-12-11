@@ -3,8 +3,12 @@ package client.indexer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -67,7 +71,7 @@ public class IndexerFrame extends JFrame {
 	JSplitPane mainSplitter;
 	JPanel panel = null;
 	
-	public IndexerFrame(final FrameController controller, BatchState stateInfo) {
+	public IndexerFrame(final FrameController controller,final BatchState stateInfo) {
 		this.stateInfo = stateInfo;
 		this.controller = controller;
 		// Set the window's title
@@ -81,6 +85,8 @@ public class IndexerFrame extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
@@ -156,19 +162,10 @@ public class IndexerFrame extends JFrame {
 		menuBar.add(menu);
 		
 		this.setJMenuBar(menuBar);
-				
-		
-		
 
 		createButtonPanel(userDownloaded);
 		
-		
-
-		// Set the location of the window on the desktop
-		this.setLocation(100, 100);
-
-		// Size the window according to the preferred sizes and layout of its subcomponents
-		this.setSize(900, 700);
+		this.setBounds(stateInfo.getWindowXOrigin(), stateInfo.getWindowYOrigin(), stateInfo.getWindowWidth(), stateInfo.getWindowHeight());
 	}
 
 	public void exitProgram()
@@ -207,7 +204,6 @@ public class IndexerFrame extends JFrame {
 
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
-				System.out.println("Selected Cell Row: " + table.getSelectedRow() + " Col: " + table.getSelectedColumn());
 				stateInfo.setSelectedCell(new Cell(table.getSelectedRow(), table.getSelectedColumn()));
 			}
 			
@@ -255,6 +251,21 @@ public class IndexerFrame extends JFrame {
 		}
 		bottomLeftPane.removeAll();
 		
+		stateInfo.addListener(new BatchStateListener(){
+
+			@Override
+			public void valueChanged(Cell cell, String newValue) {
+				table.repaint();
+			}
+
+			@Override
+			public void selectedCellChanged(Cell newSelectedCell) {
+				table.setRowSelectionInterval(newSelectedCell.getRow(), newSelectedCell.getRow());
+				table.setColumnSelectionInterval(newSelectedCell.getCol(), newSelectedCell.getCol());
+			}
+			
+		});
+		
 		fieldHelp = new HelpPane(stateInfo, controller.getHostname(), controller.getPort());
 		formPanel = new FormPanel(stateInfo);
 		tableEntry = new ScrollPane(table);
@@ -280,22 +291,75 @@ public class IndexerFrame extends JFrame {
 		mainSplitter.setDividerLocation(400);
 		userDownloaded = true;
 		createButtonPanel(userDownloaded);
+		
+		mainSplitter.addPropertyChangeListener(JSplitPane.DIVIDER_LOCATION_PROPERTY, new PropertyChangeListener(){
+
+			@Override
+			public void propertyChange(PropertyChangeEvent arg0) {
+				stateInfo.setMainSplitLocation((int)arg0.getNewValue());
+			}
+			
+		});
+		
+		bottomSplitter.addPropertyChangeListener(JSplitPane.DIVIDER_LOCATION_PROPERTY, new PropertyChangeListener(){
+
+			@Override
+			public void propertyChange(PropertyChangeEvent arg0) {
+				stateInfo.setBottomSplitLocation((int)arg0.getNewValue());
+			}
+			
+		});
+		
+		mainSplitter.setDividerLocation(stateInfo.getMainSplitLocation());
+		bottomSplitter.setDividerLocation(stateInfo.getBottomSplitLocation());
+		
+		this.addComponentListener(new ComponentListener(){
+
+			@Override
+			public void componentHidden(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void componentMoved(ComponentEvent arg0) {
+				setState(arg0);
+			}
+
+			@Override
+			public void componentResized(ComponentEvent arg0) {
+				setState(arg0);
+			}
+
+			@Override
+			public void componentShown(ComponentEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void setState(ComponentEvent e)
+			{
+				stateInfo.setWindowXOrigin(e.getComponent().getX());
+				stateInfo.setWindowYOrigin(e.getComponent().getX());
+				stateInfo.setWindowWidth(e.getComponent().getWidth());
+				stateInfo.setWindowHeight(e.getComponent().getHeight());
+			}
+			
+		});
+		this.setBounds(stateInfo.getWindowXOrigin(), stateInfo.getWindowYOrigin(), stateInfo.getWindowWidth(), stateInfo.getWindowHeight());
 		this.validate();
 		this.repaint();
 	}
 	
 	public void createListeners()
 	{
-		System.out.println("Listeners set." );
 		stateInfo.setListeners(new ArrayList<BatchStateListener>());
 	}
 	
 	public void createButtonPanel(boolean turnOn)
 	{
-		System.out.println("Creating a new button panel");
 		if(panel != null)
 		{
-			System.out.println("Removing old panel");
 			this.getContentPane().remove(panel);
 		}
 		panel = new JPanel();

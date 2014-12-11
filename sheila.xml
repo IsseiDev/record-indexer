@@ -52,12 +52,18 @@
   </fields>
   <recordCount>8</recordCount>
   <fieldCount>5</fieldCount>
-  <batchID>2</batchID>
+  <batchID>5</batchID>
   <firstycoord>199</firstycoord>
   <recordHeight>60</recordHeight>
-  <imageScale>1.4</imageScale>
-  <imagexOrigin>440</imagexOrigin>
-  <imageyOrigin>312</imageyOrigin>
+  <imageScale>1.0</imageScale>
+  <imagexOrigin>0</imagexOrigin>
+  <imageyOrigin>0</imageyOrigin>
+  <windowXOrigin>100</windowXOrigin>
+  <windowYOrigin>100</windowYOrigin>
+  <windowWidth>900</windowWidth>
+  <windowHeight>700</windowHeight>
+  <mainSplitLocation>400</mainSplitLocation>
+  <bottomSplitLocation>600</bottomSplitLocation>
   <imageInverted>false</imageInverted>
   <values>
     <string-array>
@@ -69,10 +75,10 @@
     </string-array>
     <string-array>
       <string>2</string>
-      <string>hotmail</string>
-      <string>dot</string>
-      <string>com</string>
-      <string>lel</string>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
     </string-array>
     <string-array>
       <string>3</string>
@@ -119,7 +125,7 @@
   </values>
   <selectedCell>
     <row>1</row>
-    <col>2</col>
+    <col>1</col>
   </selectedCell>
-  <imageLocation>http://localhost:8080/images/1890_image1.png</imageLocation>
+  <imageLocation>http://localhost:8080/images/1890_image4.png</imageLocation>
 </client.UI.BatchState>

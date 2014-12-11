@@ -283,17 +283,12 @@ public class FrameController {
 	
 	public void saveUser()
 	{
-		System.out.println("Saving User.");
 		xStream = new XStream(new DomDriver()); 
 
 		try {
-			System.out.println("Trying.");
 			outFile = new BufferedOutputStream(new FileOutputStream( username + ".xml"));
-			System.out.println("Putting to XML.");
 			xStream.toXML(stateInfo, outFile); // This writes your batchstate to the outputFile;
-			System.out.println("Saving OUTFILE.");
 			outFile.close(); //close the writer
-			System.out.println("Closing.");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("The exception: " + e);

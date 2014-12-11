@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.KeyEventDispatcher;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -53,7 +55,6 @@ public class FormPanel extends JPanel{
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()) return;
-				System.out.println("Selected List Index: " + list.getSelectedIndex() + " Selected Cell Col: " + stateInfo.getSelectedCell().getCol());
 				stateInfo.setSelectedCell(new Cell(list.getSelectedIndex(), stateInfo.getSelectedCell().getCol()));
 				
 			}
@@ -81,74 +82,59 @@ public class FormPanel extends JPanel{
 						
 						horizLayout.add(label);
 						
-						JTextField tf = textFields[col] = new JTextField();
+						final JTextField tf = textFields[col] = new JTextField();
 						
 						tf.setColumns(20);
 						
 						final int finalcol = col;
-						tf.addMouseListener(new MouseListener(){
-
-							@Override
-							public void mouseClicked(MouseEvent arg0) {
-								textFields[finalcol].requestFocusInWindow();
-								stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
-							}
-
-							@Override
-							public void mouseEntered(MouseEvent arg0) {
-								// TODO Auto-generated method stu
-								
-							}
-
-							@Override
-							public void mouseExited(MouseEvent arg0) {
-								// TODO Auto-generated method stub
-								
-							}
-
-							@Override
-							public void mousePressed(MouseEvent arg0) {
-								textFields[finalcol].requestFocusInWindow();
-								stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
-							}
-
-							@Override
-							public void mouseReleased(MouseEvent arg0) {
-								// TODO Auto-generated method stub
-								
-							}
-							
-						});
 						
-						tf.addKeyListener(new KeyListener()
-						{
+						tf.addFocusListener(new FocusListener(){
 
 							@Override
-							public void keyPressed(KeyEvent arg0) {
-								// TODO Auto-generated method stub
+							public void focusGained(FocusEvent e) {
+								stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
 								
 							}
 
 							@Override
-							public void keyReleased(KeyEvent arg0) {
-								
-							}
-
-							@Override
-							public void keyTyped(KeyEvent arg0) {
-								if(arg0.getKeyCode() == KeyEvent.VK_TAB)
-								{
-									textFields[finalcol].requestFocusInWindow();
-									stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));	
-								}
-								else
-								{
-									System.out.println("Arg 0 is: " + arg0.getKeyCode());
-								}
-								
+							public void focusLost(FocusEvent e) {
+								stateInfo.setValue(stateInfo.getSelectedCell(), tf.getText());
 							}
 							
 						});
+						//tf.addMouseListener(new MouseListener(){
+						//
+						//	@Override
+						//	public void mouseClicked(MouseEvent arg0) {
+						//		textFields[finalcol].requestFocusInWindow();
+						//		stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
+						//	}
+
+						//	@Override
+						//	public void mouseEntered(MouseEvent arg0) {
+						//		// TODO Auto-generated method stu
+						//		
+						//	}
+
+						//	@Override
+						//	public void mouseExited(MouseEvent arg0) {
+						//		// TODO Auto-generated method stub
+						//		
+						//	}
+
+						//	@Override
+						//	public void mousePressed(MouseEvent arg0) {
+						//		textFields[finalcol].requestFocusInWindow();
+						//		stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
+						//	}
+
+						//	@Override
+						//	public void mouseReleased(MouseEvent arg0) {
+						//		// TODO Auto-generated method stub
+						//		
+						//	}
+						//	
+						//});
 						
 						if(stateInfo.getSelectedCell().getCol() == col)
 						{
@@ -158,21 +144,20 @@ public class FormPanel extends JPanel{
 						horizLayout.add(textFields[col]);
 						formPanel.add(horizLayout);
 					}
+					
 					col++;
 				}
 		}	
-		
 		
 		stateInfo.addListener(new BatchStateListener(){
 
 			@Override
 			public void valueChanged(Cell cell, String newValue) {
-				//getValues();
+				
 			}
 
 			@Override
 			public void selectedCellChanged(Cell newSelectedCell) {
-				System.out.println("Trying to get from this Row: " + newSelectedCell.getRow() + " and this Col: " + newSelectedCell.getCol());
 				list.setSelectedIndex(newSelectedCell.getRow());
 				getValues();
 				if(newSelectedCell.getCol() != 0)

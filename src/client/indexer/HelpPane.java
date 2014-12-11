@@ -13,7 +13,7 @@ public class HelpPane extends JEditorPane {
 	
 	public HelpPane(final BatchState stateInfo, final String hostname, final String port) {
 		this.stateInfo = stateInfo;
-		setContentType("text/html");
+		this.setContentType("text/html");
 		this.setEditable(false);
 		
 		try {

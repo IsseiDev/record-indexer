@@ -27,6 +27,12 @@ public class BatchState {
 		double imageScale = 1.0;
 		int imagexOrigin = 0;
 		int imageyOrigin = 0;
+		int windowXOrigin = 100;
+		int windowYOrigin = 100;
+		int windowWidth = 900;
+		int windowHeight = 700;
+		int mainSplitLocation = 400;
+		int bottomSplitLocation = 600;
 		boolean imageInverted = false;
 		private String[][] values;
 		private Cell selectedCell;
@@ -66,6 +72,12 @@ public class BatchState {
 			for (BatchStateListener l : listeners) {
 				l.valueChanged(cell, value);
 			}
+		}
+		
+		public void setValueAt(Cell cell, String value) {
+			
+			values[cell.getRow()][cell.getCol()] = value;
+
 		}
 		
 		public String getValue(Cell cell) {
@@ -260,6 +272,78 @@ public class BatchState {
 
 		public void setImageLocation(String imageLocation) {
 			this.imageLocation = imageLocation;
+		}
+
+		public double getImageScale() {
+			return imageScale;
+		}
+
+		public void setImageScale(double imageScale) {
+			this.imageScale = imageScale;
+		}
+
+		public int getImagexOrigin() {
+			return imagexOrigin;
+		}
+
+		public void setImagexOrigin(int imagexOrigin) {
+			this.imagexOrigin = imagexOrigin;
+		}
+
+		public int getImageyOrigin() {
+			return imageyOrigin;
+		}
+
+		public void setImageyOrigin(int imageyOrigin) {
+			this.imageyOrigin = imageyOrigin;
+		}
+
+		public int getWindowXOrigin() {
+			return windowXOrigin;
+		}
+
+		public void setWindowXOrigin(int windowXOrigin) {
+			this.windowXOrigin = windowXOrigin;
+		}
+
+		public int getWindowYOrigin() {
+			return windowYOrigin;
+		}
+
+		public void setWindowYOrigin(int windowYOrigin) {
+			this.windowYOrigin = windowYOrigin;
+		}
+
+		public int getWindowWidth() {
+			return windowWidth;
+		}
+
+		public void setWindowWidth(int windowWidth) {
+			this.windowWidth = windowWidth;
+		}
+
+		public int getWindowHeight() {
+			return windowHeight;
+		}
+
+		public void setWindowHeight(int windowHeight) {
+			this.windowHeight = windowHeight;
+		}
+
+		public int getMainSplitLocation() {
+			return mainSplitLocation;
+		}
+
+		public void setMainSplitLocation(int mainSplitLocation) {
+			this.mainSplitLocation = mainSplitLocation;
+		}
+
+		public int getBottomSplitLocation() {
+			return bottomSplitLocation;
+		}
+
+		public void setBottomSplitLocation(int bottomSplitLocation) {
+			this.bottomSplitLocation = bottomSplitLocation;
 		}
 
 		public void setDummyFields(){

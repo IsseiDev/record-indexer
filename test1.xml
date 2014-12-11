@@ -2,94 +2,128 @@
   <fields>
     <shared.model.Field>
       <id>0</id>
-      <title>Hi</title>
+      <title>Record Number</title>
       <helphtml></helphtml>
       <knowndata></knowndata>
       <xcoord>-1</xcoord>
-      <width>1</width>
-      <position>0</position>
-      <project__id>0</project__id>
+      <width>-1</width>
+      <position>-1</position>
+      <project__id>-1</project__id>
     </shared.model.Field>
     <shared.model.Field>
-      <id>0</id>
-      <title>My</title>
-      <helphtml></helphtml>
-      <knowndata></knowndata>
-      <xcoord>-1</xcoord>
-      <width>1</width>
+      <id>1</id>
+      <title>Last Name</title>
+      <helphtml>fieldhelp/last_name.html</helphtml>
+      <knowndata>knowndata/1890_last_names.txt</knowndata>
+      <xcoord>60</xcoord>
+      <width>300</width>
       <position>0</position>
-      <project__id>0</project__id>
+      <project__id>1</project__id>
     </shared.model.Field>
     <shared.model.Field>
-      <id>0</id>
-      <title>Name</title>
-      <helphtml></helphtml>
-      <knowndata></knowndata>
-      <xcoord>-1</xcoord>
-      <width>1</width>
-      <position>0</position>
-      <project__id>0</project__id>
+      <id>2</id>
+      <title>First Name</title>
+      <helphtml>fieldhelp/first_name.html</helphtml>
+      <knowndata>knowndata/1890_first_names.txt</knowndata>
+      <xcoord>360</xcoord>
+      <width>280</width>
+      <position>1</position>
+      <project__id>1</project__id>
     </shared.model.Field>
     <shared.model.Field>
-      <id>0</id>
-      <title>Is</title>
-      <helphtml></helphtml>
-      <knowndata></knowndata>
-      <xcoord>-1</xcoord>
-      <width>1</width>
-      <position>0</position>
-      <project__id>0</project__id>
+      <id>3</id>
+      <title>Gender</title>
+      <helphtml>fieldhelp/gender.html</helphtml>
+      <knowndata>knowndata/genders.txt</knowndata>
+      <xcoord>640</xcoord>
+      <width>205</width>
+      <position>2</position>
+      <project__id>1</project__id>
     </shared.model.Field>
     <shared.model.Field>
-      <id>0</id>
-      <title>Moe</title>
-      <helphtml></helphtml>
-      <knowndata></knowndata>
-      <xcoord>-1</xcoord>
-      <width>1</width>
-      <position>0</position>
-      <project__id>0</project__id>
+      <id>4</id>
+      <title>Age</title>
+      <helphtml>fieldhelp/age.html</helphtml>
+      <xcoord>845</xcoord>
+      <width>120</width>
+      <position>3</position>
+      <project__id>1</project__id>
     </shared.model.Field>
   </fields>
-  <recordCount>5</recordCount>
+  <recordCount>8</recordCount>
   <fieldCount>5</fieldCount>
+  <batchID>3</batchID>
+  <firstycoord>199</firstycoord>
+  <recordHeight>60</recordHeight>
+  <imageScale>1.0</imageScale>
+  <imagexOrigin>0</imagexOrigin>
+  <imageyOrigin>0</imageyOrigin>
+  <windowXOrigin>544</windowXOrigin>
+  <windowYOrigin>544</windowYOrigin>
+  <windowWidth>718</windowWidth>
+  <windowHeight>531</windowHeight>
+  <imageInverted>false</imageInverted>
   <values>
     <string-array>
-      <null/>
-      <null/>
-      <null/>
-      <null/>
-      <null/>
-    </string-array>
-    <string-array>
-      <null/>
+      <string>1</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
-      <null/>
-      <null/>
-      <null/>
-      <null/>
-      <null/>
-    </string-array>
-    <string-array>
-      <null/>
+      <string>2</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
     <string-array>
+      <string>3</string>
       <null/>
+      <null/>
+      <null/>
+      <null/>
+    </string-array>
+    <string-array>
+      <string>4</string>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </string-array>
+    <string-array>
+      <string>5</string>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </string-array>
+    <string-array>
+      <string>6</string>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </string-array>
+    <string-array>
+      <string>7</string>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </string-array>
+    <string-array>
+      <string>8</string>
       <null/>
       <null/>
       <null/>
       <null/>
     </string-array>
   </values>
-  <listeners/>
-  <imageLocation>http://localhost:8080/images/draft_image3.png</imageLocation>
+  <selectedCell>
+    <row>1</row>
+    <col>1</col>
+  </selectedCell>
+  <imageLocation>http://localhost:8080/images/1890_image2.png</imageLocation>
 </client.UI.BatchState>

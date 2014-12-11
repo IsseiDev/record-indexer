@@ -74,8 +74,6 @@ public class DrawingComponent extends JComponent {
 			w_originY = bufferedImage.getHeight()/2;
 		}
 		
-		System.out.println("Scale: " + scale + " X-Origin: " + w_originX + " Y-Origin: " + w_originY + " Inverted?: " + inverted);
-		System.out.println("Image Width: " + bufferedImage.getWidth() + " Image Height: " + bufferedImage.getHeight());
 		picture = new DrawingImage(bufferedImage, new Rectangle2D.Double(240, 180, bufferedImage.getWidth(null) /2* scale, bufferedImage.getHeight(null) /2 * scale));
 		shapes.add(picture);	
 		

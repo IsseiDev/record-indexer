@@ -1,108 +1,270 @@
-Dec 10, 2014 5:03:55 PM server.Server run
+Dec 11, 2014 12:14:47 PM server.Server run
 INFO: Initializing Model
-Dec 10, 2014 5:03:55 PM server.Server run
+Dec 11, 2014 12:14:47 PM server.Server run
 INFO: Initializing HTTP Server on port 8080
-Dec 10, 2014 5:03:55 PM server.Server run
+Dec 11, 2014 12:14:47 PM server.Server run
 INFO: Starting HTTP Server.
-Dec 10, 2014 5:07:42 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/gender.html
-Dec 10, 2014 5:07:56 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/first_name.html
-Dec 10, 2014 5:07:56 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/first_name.html
-Dec 10, 2014 5:07:56 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/first_name.html
-Dec 10, 2014 5:07:56 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/first_name.html
-Dec 10, 2014 5:07:57 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/gender.html
-Dec 10, 2014 5:07:57 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/gender.html
-Dec 10, 2014 5:07:57 PM server.DownloadHandler handle
+Dec 11, 2014 12:14:53 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/age.html
-Dec 10, 2014 5:07:57 PM server.DownloadHandler handle
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:15:01 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:15:03 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:15:04 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:15:04 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:45 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/age.html
-Dec 10, 2014 5:08:53 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:49 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:49 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:51 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:08:53 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:08:53 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:08:53 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:53 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:54 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:11:58 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:11:59 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:12:13 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:12:14 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:55 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:17:12 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:17:13 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:56 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:18:43 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:18:44 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:20:18 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:20:19 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:57 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:21:39 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:21:40 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:21:58 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:21:59 PM server.DownloadHandler handle
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:58 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:16:59 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:59 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:16:59 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:16:59 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:17:04 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:07 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:17:08 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:08 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:08 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:08 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:16 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:16 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:19 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:17:33 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:17:34 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:24:09 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:24:10 PM server.DownloadHandler handle
+Dec 11, 2014 12:17:34 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:24:24 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:24:25 PM server.DownloadHandler handle
+Dec 11, 2014 12:22:00 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:22:19 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:24:38 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:24:39 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:24:54 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:24:55 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:25:13 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:25:14 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:25:28 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:25:29 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:25:46 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:25:47 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:26:15 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:26:16 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:27:49 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:27:50 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:28:08 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:28:09 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:28:32 PM server.DownloadHandler handle
-FINE: database/Records//images/1890_image0.png
-Dec 10, 2014 5:28:33 PM server.DownloadHandler handle
-FINE: database/Records//fieldhelp/last_name.html
-Dec 10, 2014 5:30:37 PM server.DownloadHandler handle
+Dec 11, 2014 12:22:52 PM server.DownloadHandler handle
 FINE: database/Records//images/1890_image1.png
-Dec 10, 2014 5:30:38 PM server.DownloadHandler handle
+Dec 11, 2014 12:22:53 PM server.DownloadHandler handle
 FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:23:18 PM server.DownloadHandler handle
+FINE: database/Records//images/1890_image1.png
+Dec 11, 2014 12:23:19 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:23:30 PM server.DownloadHandler handle
+FINE: database/Records//images/1890_image1.png
+Dec 11, 2014 12:23:31 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:28:03 PM server.DownloadHandler handle
+FINE: database/Records//images/1890_image1.png
+Dec 11, 2014 12:28:04 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:28:23 PM server.DownloadHandler handle
+FINE: database/Records//images/1890_image1.png
+Dec 11, 2014 12:28:24 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:28:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:28:52 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:28:53 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:28:54 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:28:54 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:28:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:28:55 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:28:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:28:56 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:29:22 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:29:25 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:29:25 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:29:25 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/gender.html
+Dec 11, 2014 12:29:26 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:29:26 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/age.html
+Dec 11, 2014 12:29:28 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:29:28 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:29:28 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:29:28 PM server.DownloadHandler handle
+FINE: database/Records//
+Dec 11, 2014 12:29:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:29:29 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/last_name.html
+Dec 11, 2014 12:29:34 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:29:34 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html
+Dec 11, 2014 12:29:34 PM server.DownloadHandler handle
+FINE: database/Records//fieldhelp/first_name.html

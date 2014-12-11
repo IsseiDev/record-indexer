@@ -64,11 +64,15 @@ public class DrawingComponent extends JComponent {
 				
 		//w_originX = stateInfo.getXOrigin();
 		//w_originY = stateInfo.getYOrigin();
-		w_originX = bufferedImage.getWidth()/2;
-		w_originY = bufferedImage.getHeight()/2;
 
 		w_originX = stateInfo.getXOrigin();
 		w_originY = stateInfo.getYOrigin();
+		
+		if(w_originX == 0 && w_originY == 0)
+		{
+			w_originX = bufferedImage.getWidth()/2;
+			w_originY = bufferedImage.getHeight()/2;
+		}
 		
 		System.out.println("Scale: " + scale + " X-Origin: " + w_originX + " Y-Origin: " + w_originY + " Inverted?: " + inverted);
 		System.out.println("Image Width: " + bufferedImage.getWidth() + " Image Height: " + bufferedImage.getHeight());

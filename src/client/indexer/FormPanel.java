@@ -71,7 +71,6 @@ public class FormPanel extends JPanel{
 				{
 					if(col != 0)
 					{
-						System.out.println("Adding new panel.");
 						horizLayout = new JPanel();
 						
 						horizLayout.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -87,7 +86,6 @@ public class FormPanel extends JPanel{
 						tf.setColumns(20);
 						
 						final int finalcol = col;
-						tf.setFocusTraversalKeysEnabled(false);
 						tf.addMouseListener(new MouseListener(){
 
 							@Override
@@ -177,7 +175,10 @@ public class FormPanel extends JPanel{
 				System.out.println("Trying to get from this Row: " + newSelectedCell.getRow() + " and this Col: " + newSelectedCell.getCol());
 				list.setSelectedIndex(newSelectedCell.getRow());
 				getValues();
-				textFields[newSelectedCell.getCol()].requestFocusInWindow();
+				if(newSelectedCell.getCol() != 0)
+				{
+					textFields[newSelectedCell.getCol()].requestFocusInWindow();
+				}
 			}
 			
 		});

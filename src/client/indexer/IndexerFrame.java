@@ -3,6 +3,8 @@ package client.indexer;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -65,15 +67,20 @@ public class IndexerFrame extends JFrame {
 	JSplitPane mainSplitter;
 	JPanel panel = null;
 	
-	public IndexerFrame(FrameController controller, BatchState stateInfo) {
+	public IndexerFrame(final FrameController controller, BatchState stateInfo) {
 		this.stateInfo = stateInfo;
 		this.controller = controller;
 		// Set the window's title
 		this.setTitle("Indexer");
 		
 		// Specify what should happen when the user clicks the window's close icon
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent evt){
+				controller.saveUser();
+				System.exit(0);
+			}
+		});
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};

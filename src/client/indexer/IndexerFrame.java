@@ -340,7 +340,7 @@ public class IndexerFrame extends JFrame {
 			public void setState(ComponentEvent e)
 			{
 				stateInfo.setWindowXOrigin(e.getComponent().getX());
-				stateInfo.setWindowYOrigin(e.getComponent().getX());
+				stateInfo.setWindowYOrigin(e.getComponent().getY());
 				stateInfo.setWindowWidth(e.getComponent().getWidth());
 				stateInfo.setWindowHeight(e.getComponent().getHeight());
 			}

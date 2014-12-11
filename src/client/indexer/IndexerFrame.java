@@ -41,8 +41,10 @@ public class IndexerFrame extends JFrame {
 	ImagePanel image;
 	JTabbedPane bottomLeftPane;
 	JTabbedPane bottomRightPane;
-	TablePanel tableEntry;
-	JPanel formEntry;
+	ScrollPane tableEntry;
+	JPanel formPanel;
+	ScrollPane formEntry;
+	ScrollPane fieldEntry;
 	HelpPane fieldHelp;
 	JPanel imageNav;
 	
@@ -101,9 +103,12 @@ public class IndexerFrame extends JFrame {
 		
 
 		table = null;
+		formPanel = null;
+		fieldHelp = null;
 		
-		tableEntry = new TablePanel(table);
-		formEntry = new FormPanel(stateInfo);
+		tableEntry = new ScrollPane(table);
+		formEntry = new ScrollPane(formPanel);
+		fieldEntry = new ScrollPane(fieldHelp);
 		
 		bottomLeftPane = new JTabbedPane(JTabbedPane.TOP);
 		bottomRightPane = new JTabbedPane(JTabbedPane.TOP);
@@ -115,7 +120,7 @@ public class IndexerFrame extends JFrame {
 		bottomLeftPane.addTab("Table Entry", tableEntry);
 		bottomLeftPane.addTab("Form Entry", formEntry);
 		
-		bottomRightPane.addTab("Field Help", fieldHelp);
+		bottomRightPane.addTab("Field Help", fieldEntry);
 		bottomRightPane.addTab("Image Navigation", imageNav);
 
 		mainSplitter.setLeftComponent(image);
@@ -237,19 +242,23 @@ public class IndexerFrame extends JFrame {
 
 				@Override
 				public void columnSelectionChanged(ListSelectionEvent arg0) {
-					stateInfo.setSelectedCell(new Cell(table.getSelectedRow(), table.getSelectedColumn()));
+					stateInfo.setSelectedCell(new Cell(arg0.getFirstIndex(), table.getSelectedColumn()));
 				}
 			});
 		}
 		bottomLeftPane.removeAll();
-		tableEntry = new TablePanel(table);
-		formEntry = new FormPanel(stateInfo);
+		
 		fieldHelp = new HelpPane(stateInfo, controller.getHostname(), controller.getPort());
+		formPanel = new FormPanel(stateInfo);
+		tableEntry = new ScrollPane(table);
+		formEntry = new ScrollPane(formPanel);
+		fieldEntry = new ScrollPane(fieldHelp);
+		
 		bottomLeftPane.addTab("Table Entry", tableEntry);
 		bottomLeftPane.addTab("Form Entry", formEntry);
 		
 		bottomRightPane.removeAll();
-		bottomRightPane.addTab("Field Help", fieldHelp);
+		bottomRightPane.addTab("Field Help", fieldEntry);
 		bottomRightPane.addTab("Image Navigation", new JPanel());
 
 		this.repaint();
@@ -379,12 +388,12 @@ public class IndexerFrame extends JFrame {
 		this.bottomRightPane = bottomRightPane;
 	}
 
-	public JPanel getFormEntry() {
-		return formEntry;
+	public JPanel getFormPanel() {
+		return formPanel;
 	}
 
-	public void setFormEntry(JPanel formEntry) {
-		this.formEntry = formEntry;
+	public void setFormPanel(JPanel formPanel) {
+		this.formPanel = formPanel;
 	}
 
 	public HelpPane getFieldHelp() {

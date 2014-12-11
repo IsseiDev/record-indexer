@@ -7,10 +7,10 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
-public class TablePanel extends JScrollPane {
+public class ScrollPane extends JScrollPane {
 
-	public TablePanel(JComponent table){
-		super(table);
+	public ScrollPane(JComponent component){
+		super(component);
 		this.setBackground(Color.GRAY);
 		
 	}

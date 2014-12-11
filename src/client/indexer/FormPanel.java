@@ -3,6 +3,11 @@ package client.indexer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.KeyEventDispatcher;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -11,9 +16,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import shared.model.Field;
 import client.UI.BatchState;
+import client.listeners.BatchStateListener;
 
 @SuppressWarnings("serial")
 public class FormPanel extends JPanel{
@@ -22,8 +30,9 @@ public class FormPanel extends JPanel{
 	JPanel horizLayout;
 	BatchState stateInfo;
 	JPanel formPanel;
+	JTextField[] textFields;
 	
-	public FormPanel(BatchState stateInfo){
+	public FormPanel(final BatchState stateInfo){
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -38,12 +47,23 @@ public class FormPanel extends JPanel{
 		
 		list.setModel(listModel);
 		list.setSelectedIndex(stateInfo.getSelectedCell().getRow());
-		
+		list.addListSelectionListener(new ListSelectionListener()
+		{
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(e.getValueIsAdjusting()) return;
+				System.out.println("Selected List Index: " + list.getSelectedIndex() + " Selected Cell Col: " + stateInfo.getSelectedCell().getCol());
+				stateInfo.setSelectedCell(new Cell(list.getSelectedIndex(), stateInfo.getSelectedCell().getCol()));
+				
+			}
+			
+		});
 		formPanel = new JPanel();
 		add(formPanel, BorderLayout.CENTER);
 		
 		formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
-		JTextField[] textFields = new JTextField[stateInfo.getFieldCount()];
+		textFields = new JTextField[stateInfo.getFieldCount()];
 		int col = 0;
 		if(stateInfo.getFields() != null)
 		{
@@ -66,12 +86,109 @@ public class FormPanel extends JPanel{
 						
 						tf.setColumns(20);
 						
+						final int finalcol = col;
+						tf.setFocusTraversalKeysEnabled(false);
+						tf.addMouseListener(new MouseListener(){
+
+							@Override
+							public void mouseClicked(MouseEvent arg0) {
+								textFields[finalcol].requestFocusInWindow();
+								stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
+							}
+
+							@Override
+							public void mouseEntered(MouseEvent arg0) {
+								// TODO Auto-generated method stu
+								
+							}
+
+							@Override
+							public void mouseExited(MouseEvent arg0) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void mousePressed(MouseEvent arg0) {
+								textFields[finalcol].requestFocusInWindow();
+								stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));
+							}
+
+							@Override
+							public void mouseReleased(MouseEvent arg0) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+						});
+						
+						tf.addKeyListener(new KeyListener()
+						{
+
+							@Override
+							public void keyPressed(KeyEvent arg0) {
+								// TODO Auto-generated method stub
+								
+							}
+
+							@Override
+							public void keyReleased(KeyEvent arg0) {
+								
+							}
+
+							@Override
+							public void keyTyped(KeyEvent arg0) {
+								if(arg0.getKeyCode() == KeyEvent.VK_TAB)
+								{
+									textFields[finalcol].requestFocusInWindow();
+									stateInfo.setSelectedCell(new Cell(stateInfo.getSelectedCell().getRow(), finalcol));	
+								}
+								else
+								{
+									System.out.println("Arg 0 is: " + arg0.getKeyCode());
+								}
+								
+							}
+							
+						});
+						
+						if(stateInfo.getSelectedCell().getCol() == col)
+						{
+							textFields[col].requestFocusInWindow();
+						}
+						
 						horizLayout.add(textFields[col]);
 						formPanel.add(horizLayout);
 					}
 					col++;
 				}
-		}
+		}	
 		
+		
+		stateInfo.addListener(new BatchStateListener(){
+
+			@Override
+			public void valueChanged(Cell cell, String newValue) {
+				//getValues();
+			}
+
+			@Override
+			public void selectedCellChanged(Cell newSelectedCell) {
+				System.out.println("Trying to get from this Row: " + newSelectedCell.getRow() + " and this Col: " + newSelectedCell.getCol());
+				list.setSelectedIndex(newSelectedCell.getRow());
+				getValues();
+				textFields[newSelectedCell.getCol()].requestFocusInWindow();
+			}
+			
+		});
+		
+	}
+	
+	
+	public void getValues(){
+		for(int col = 1; col < textFields.length; col++)
+		{
+			textFields[col].setText(stateInfo.getValue(new Cell(stateInfo.getSelectedCell().getRow(), col)));
+		}
 	}
 }

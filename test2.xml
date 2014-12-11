@@ -52,12 +52,12 @@
   </fields>
   <recordCount>8</recordCount>
   <fieldCount>5</fieldCount>
-  <batchID>1</batchID>
+  <batchID>4</batchID>
   <firstycoord>199</firstycoord>
   <recordHeight>60</recordHeight>
-  <imageScale>1.0</imageScale>
-  <imagexOrigin>422</imagexOrigin>
-  <imageyOrigin>360</imageyOrigin>
+  <imageScale>1.9999999999999998</imageScale>
+  <imagexOrigin>393</imagexOrigin>
+  <imageyOrigin>248</imageyOrigin>
   <imageInverted>false</imageInverted>
   <values>
     <string-array>
@@ -69,23 +69,23 @@
     </string-array>
     <string-array>
       <string>2</string>
-      <string>sdf</string>
+      <null/>
+      <string>dasf</string>
       <null/>
       <null/>
-      <string>dsf</string>
     </string-array>
     <string-array>
       <string>3</string>
       <null/>
-      <string>sdf</string>
       <null/>
+      <string>dsf</string>
       <null/>
     </string-array>
     <string-array>
       <string>4</string>
+      <string>dfgdgfg</string>
       <null/>
       <null/>
-      <string>sd</string>
       <null/>
     </string-array>
     <string-array>
@@ -97,9 +97,9 @@
     </string-array>
     <string-array>
       <string>6</string>
-      <string>sdf</string>
       <null/>
-      <string>sdf</string>
+      <null/>
+      <null/>
       <null/>
     </string-array>
     <string-array>
@@ -121,5 +121,5 @@
     <row>3</row>
     <col>4</col>
   </selectedCell>
-  <imageLocation>http://localhost:39640/images/1890_image0.png</imageLocation>
+  <imageLocation>http://localhost:39640/images/1890_image3.png</imageLocation>
 </client.UI.BatchState>
